@@ -1,0 +1,20 @@
+export function keyFind<T>(
+  list: { key: string; value: T }[],
+  key: string
+): { key: string; value: T } | undefined {
+  return list.find((item) => item.key === key);
+}
+
+// const data = [
+//   { key: "a", value: 1 },
+//   { key: "b", value: 2 },
+//   { key: "c", value: 3 },
+//   { key: "d", value: 4 },
+// ];
+
+// const found = keyFind(data, "c");
+// console.log(found);
+// // { key: 'c', value: 3 }
+
+// const notFound = keyFind(data, "e");
+// console.log(notFound); // undefined

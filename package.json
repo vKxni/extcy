@@ -1,0 +1,27 @@
+{
+  "name": "extcy",
+  "version": "1.1.5",
+  "description": "Powerful functional Elixir function composition for TypeScript",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "ht": "tsc && node dist/index.js",
+    "test": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vKxni/extcy.git"
+  },
+  "keywords": [
+    "elixir",
+    "pattern-matching",
+    "pipe",
+    "enum",
+    "functional"
+  ],
+  "author": "vKxni",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.0.4"
+  }
+}

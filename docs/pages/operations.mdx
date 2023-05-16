@@ -1,0 +1,119 @@
+# Extcy Operations
+
+In this chapter, we will learn how to use operations such as `pattern matching`, `cond`, `pipe`'ing and more. 
+
+
+### Pattern Matching
+
+- https://elixir-lang.org/getting-started/pattern-matching.html
+
+```ts
+const person1 = {
+  name: "Alice",
+  age: 30,
+  address: {
+    city: "San Francisco",
+    state: "California",
+  },
+};
+
+const pattern1 = {
+  name: "Alice",
+  age: (age: number) => age >= 30,
+  address: { state: "California" },
+};
+console.log(match(person1, pattern1)); // true
+```
+
+The match operator is not only used to match against simple values, but it is also useful for destructuring more complex data types.
+
+### When 
+
+- https://hexdocs.pm/elixir/guards.html
+
+```ts
+const result = when(
+  11,
+  [(n) => n === 0, () => "zero"],
+  [(n) => n % 2 === 0, () => "even"],
+  [(n) => n % 2 !== 0, () => "odd"]
+);
+
+console.log(result); // odd
+```
+
+### Cond
+
+- https://hexdocs.pm/elixir/Kernel.html#cond/1
+
+```ts
+enum Color {
+  Red = "red",
+  Blue = "blue",
+  Green = "green",
+}
+
+function getColorName(color: Color): string {
+  return cond(
+    color,
+    { predicate: (c) => c === Color.Red, result: "Red" },
+    { predicate: (c) => c === Color.Blue, result: "Blue" },
+    { predicate: (c) => c === Color.Green, result: "Green" }
+  );
+}
+
+console.log(getColorName(Color.Red)); // "Red"
+console.log(getColorName(Color.Blue)); // "Blue"
+console.log(getColorName(Color.Green)); // "Green"
+``` 
+
+### Pipe
+
+- https://elixirschool.com/de/lessons/basics/pipe_operator
+
+```ts
+const addOne = (n: number) => n + 1;
+const double = (n: number) => n * 2;
+const square = (n: number) => n * n;
+
+const result = pipe<number, number>(addOne, double, square)(3);
+console.log(result); // 64
+
+const capitalize = (str: string) => str.toUpperCase();
+const addExclamation = (str: string) => str + "!";
+const reverse = (str: string) => str.split("").reverse().join("");
+
+const result = pipe<string, string>(
+  capitalize,
+  addExclamation,
+  reverse
+)("hello");
+console.log(result); //  !OLLEH
+``` 
+
+### Sigil 
+
+- https://elixir-lang.org/getting-started/sigils.html
+
+```ts
+const capitalizedWords = sigil(/([A-Z]\w+)/g, "Hello World! This Is A Test");
+console.log(capitalizedWords); //  ['Hello', 'World', 'This', 'Is', 'Test']
+```
+
+Guards `unless`
+
+```ts
+const person = {
+  name: "John",
+  canVote: false,
+  age: 30,
+};
+
+unless(person.age < 18, () => {
+  person.canVote = true;
+});
+
+console.log(person); // Output: { name: "John", age: 30, canVote: true }
+```
+
+🥳 Awesome! Remember that these are just really simple examples. If you want to see more examples, feel free to check out `example` folder.
