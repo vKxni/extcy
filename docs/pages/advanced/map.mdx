@@ -1,0 +1,169 @@
+# Map 
+
+*Maps are the "go to" key-value data structure in Elixir.*
+
+Maps can be created with the %{} syntax, and key-value pairs can be expressed as key => value:
+
+> `getAndUpdate`
+
+```elixir 
+@spec get_and_update(map(), key(), (value() -> {get, value()} | :pop)) :: {get, map()}
+```
+
+Retrieves the value associated with the specified key from a map, applies an update function to it, and sets the updated value back into the map.
+If the key does not exist, a new entry is created with the updated value.
+
+```js
+const myMap = new Map<string, number>();
+const updatedValue = getAndUpdate(myMap, "key1", (oldValue) => (oldValue ?? 0) + 1);
+console.log(updatedValue); 
+// => 1
+
+console.log(myMap); 
+// => Map { 'key1' => 1 }
+```
+
+> `getLazy`
+
+```elixir
+@spec get_lazy(map(), key(), (() -> value())) :: value()
+```
+
+Retrieves the value associated with the specified key from a map. If the key does not exist, a default value is created and set into the map.
+
+```js
+const myMap = new Map<string, number>();
+const value = getLazy(myMap, "key1", () => {
+  console.log("Computing default value...");
+  return 42;
+});
+console.log(value); 
+// => 42
+``` 
+
+> `mapEqual`
+
+```elixir
+@spec map_equal(map(), map()) :: boolean()
+```
+
+Checks if two maps are equal by comparing their sizes and values.
+
+```js
+const map1 = new Map([
+  ["a", 1],
+  ["b", 2],
+]);
+
+const map2 = new Map([
+  ["a", 1],
+  ["b", 2],
+]);
+
+const map3 = new Map([
+  ["a", 1],
+  ["b", 3],
+]);
+
+console.log(mapEqual(map1, map2)); 
+// => true
+
+console.log(mapEqual(map1, map3)); 
+// => false
+```
+
+> `mapPutNewLazy`
+
+```elixir
+@spec map_put_new_lazy(map(), key(), (() -> value())) :: map()
+```
+
+Adds a key-value pair to a map if the key does not already exist.
+
+```js
+const map = new Map([
+  ["a", 1],
+  ["b", 2],
+]);
+
+mapPutNewLazy(map, "c", () => 3);
+mapPutNewLazy(map, "b", () => 4); // 'b' already exists, so the valueProvider is not called
+
+console.log(map); 
+// => Map(3) { 'a' => 1, 'b' => 2, 'c' => 3 }
+```
+
+> `mapValues`
+
+```elixir
+@spec map_values(map()) :: list(value())
+```
+
+Retrieves an array of values from a map.
+
+```js
+const map = new Map([
+  ["a", 1],
+  ["b", 2],
+]);
+
+const values = mapValues(map);
+
+console.log(values); 
+// => [1, 2]
+```
+
+> `popLazy`
+
+```elixir
+@spec pop_lazy(map(), key(), (() -> value())) :: value()
+```
+
+Retrieves the value associated with the specified key from a map and removes the entry from the map.
+If the key does not exist, a default value is provided.
+
+```js
+const map = new Map<string, number>([
+  ["a", 1],
+  ["b", 2],
+]);
+
+const value = popLazy(map, "a", () => 0);
+console.log(value); 
+// => 1
+
+const nonExistentValue = popLazy(map, "c", () => 0);
+console.log(nonExistentValue); 
+// => 0
+``` 
+
+> `reject`
+
+```elixir
+@spec reject(map(), (key(), value()) -> boolean()) :: map()
+```
+
+Filters an array based on a predicate function and returns a new array containing the rejected items.
+
+```js
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const oddNumbers = reject(numbers, (num) => num % 2 === 0);
+console.log(oddNumbers); 
+// => [1, 3, 5, 7, 9]
+```
+
+> `update`
+
+```elixir
+@spec update(map(), key(), (value() -> value())) :: map()
+```
+
+Updates the value associated with the specified key in a map by applying a transformation function to it.
+
+```js
+const emptyMap = {};
+const updatedMap = update(emptyMap, "key", () => "value");
+console.log(updatedMap); 
+// => { key: 'value' }
+```

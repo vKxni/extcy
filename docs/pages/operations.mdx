@@ -99,20 +99,4 @@ const capitalizedWords = sigil(/([A-Z]\w+)/g, "Hello World! This Is A Test");
 console.log(capitalizedWords); //  ['Hello', 'World', 'This', 'Is', 'Test']
 ```
 
-Guards `unless`
-
-```ts
-const person = {
-  name: "John",
-  canVote: false,
-  age: 30,
-};
-
-unless(person.age < 18, () => {
-  person.canVote = true;
-});
-
-console.log(person); // Output: { name: "John", age: 30, canVote: true }
-```
-
 🥳 Awesome! Remember that these are just really simple examples. If you want to see more examples, feel free to check out `example` folder.

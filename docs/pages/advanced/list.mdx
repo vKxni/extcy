@@ -1,0 +1,283 @@
+# List 
+
+Linked lists hold zero, one, or more elements in the chosen order. Also called "arrays" in other languages.
+
+> `asciiPrintable`
+
+```elixir 
+@spec ascii_printable?(list(), 0) :: true
+@spec ascii_printable?([], limit) :: true when limit: :infinity | pos_integer()
+@spec ascii_printable?([...], limit) :: boolean()
+```
+
+Filters a list of strings to only include those that contain printable ASCII characters.
+
+```js
+const strings = ['Hello', 'World', 'Lol', '🚀', '123', 'αβγ'];
+const filteredStrings = asciiPrintable(strings);
+console.log(filteredStrings); 
+// => ['Hello', 'World', 'LoL', '123']
+```
+
+> `duplicate`
+    
+```elixir
+@spec duplicate(list(), 0) :: list()
+@spec duplicate([], limit) :: list() when limit: :infinity | pos_integer()
+@spec duplicate([...], limit) :: list() when limit: :infinity | pos_integer()
+```
+
+Creates a new list by concatenating the given list with itself.
+
+```js
+const fruits = ["apple", "banana", "orange"];
+const duplicatedFruits = duplicateItems(fruits);
+console.log(duplicatedFruits); 
+// => ['apple', 'banana', 'orange', 'apple', 'banana', 'orange']
+```
+
+> `flattenList`
+
+```elixir
+@spec flatten_list(list()) :: list()
+```
+
+Flattens a list of arrays into a single-level array.
+
+```js
+const nestedList = [
+ [1, 2, 3],
+ [4, 5],
+ [6, 7, 8, 9],
+];
+const flattenedList = flattenList(nestedList);
+console.log(flattenedList); 
+// => [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+> `foldl`
+
+```elixir
+@spec foldl(list(), function(), any()) :: any()
+```
+
+Applies a function to each element of a list from left to right and accumulates the results.
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const sum = foldl(numbers, 0, (acc, current) => acc + current);
+console.log(sum); 
+// => 15
+
+const words = ['Hello', 'World', '!'];
+const concatenated = foldl(words, '', (acc, current) => acc + ' ' + current);
+console.log(concatenated); 
+// => ' Hello World !'
+```
+
+> `foldr`
+
+```elixir
+@spec foldr(list(), function(), any()) :: any()
+```
+
+Applies a function to each element of a list from right to left and accumulates the results.
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const sum = foldr(numbers, 0, (value, acc) => value + acc);
+console.log(sum); 
+// => 15
+
+const words = ['Hello', 'World', '!'];
+const concatenated = foldr(words, '', (acc, current) => acc + ' ' + current);
+console.log(concatenated); 
+// => 'Hello World !'
+```
+
+> `frequencies`
+
+```elixir
+@spec frequencies(list()) :: map()
+```
+
+Counts the frequencies of elements in a collection and returns a Map with the elements as keys and their frequencies as values.
+
+```js
+const numbers = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4];
+const frequencyMap = frequencies(numbers);
+console.log(frequencyMap);
+// => Map(4) { 1 => 1, 2 => 2, 3 => 3, 4 => 4 }
+```
+
+> `fromStruct`
+
+```elixir
+@spec from_struct(struct()) :: map()
+```
+
+Converts a struct-like object to a regular object where the keys are of type keyof T and the values are of type unknown.
+
+```js
+const myStruct = { field1: "value1", field2: 42 };
+const myMap = fromStruct(myStruct);
+console.log(myMap); 
+// => { field1: 'value1', field2: 42 }
+```
+
+> `keyDelete`
+
+```elixir
+@spec key_delete(map(), key()) :: map()
+```
+
+Deletes items from a list of objects based on a specific key value.
+
+```js
+const data = [
+  { key: "a", value: 1 },
+  { key: "b", value: 2 },
+  { key: "c", value: 3 },
+  { key: "d", value: 4 },
+];
+
+const filtered = keyDelete(data, "b");
+console.log(filtered); 
+// => [{ key: 'a', value: 1 }, { key: 'c', value: 3 }, { key: 'd', value: 4 }]
+```
+
+> `keyFind`
+
+```elixir
+@spec key_find(map(), key()) :: any()
+```
+
+Finds the first item in a list of objects that matches a specific key value.
+
+```js
+const data = [
+  { key: "a", value: 1 },
+  { key: "b", value: 2 },
+  { key: "c", value: 3 },
+  { key: "d", value: 4 },
+];
+
+const found = keyFind(data, "c");
+console.log(found);
+// => { key: 'c', value: 3 }
+
+const notFound = keyFind(data, "e");
+console.log(notFound); 
+// => undefined
+```
+
+> `keyMember`
+
+```elixir
+@spec key_member(map(), key()) :: boolean()
+```
+
+Checks if any object in a list has a specific key-value pair.
+
+```js
+const data = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Jane" },
+  { id: 3, name: "Alice" },
+];
+
+console.log(keyMember(data, "id", 2)); 
+// => true
+
+console.log(keyMember(data, "name", "Bob")); 
+// => false
+```
+
+> `keySort`
+
+```elixir
+@spec key_sort(map(), key()) :: list()
+```
+
+Sorts a list of objects based on a specific key.
+
+```js
+const data = [
+  { id: 3, name: "Alice" },
+  { id: 1, name: "John" },
+  { id: 2, name: "Jane" },
+];
+
+const sortedData = keySort(data, "id");
+console.log(sortedData); 
+// => [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }, { id: 3, name: 'Alice' }]
+```
+
+> `keyStore`
+
+```elixir
+@spec key_store(map(), key()) :: map()
+```
+
+Transforms a list of items into an array of key-value tuples where the value is set to a default value for items with a specific key.
+
+```js
+interface Person {
+  id: number;
+  name: string;
+}
+
+const people: Person[] = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Charlie" },
+];
+
+const result = keyStore(people, "name", "Unknown", (person) => person.name);
+console.log(result); 
+// => [[ { id: 1, name: 'Alice' }, 'Unknown' ], [ { id: 2, name: 'Bob' }, 'Unknown' ], [ { id: 3, name: 'Charlie' }, 'Unknown' ]]
+```
+
+> `popAt`
+
+```elixir
+@spec pop_at(list(), integer()) :: list()
+```
+
+Removes an item at the specified index from a list.
+
+```js
+const list = [1, 2, 3, 4, 5];
+const popped = popAt(list, 2);
+console.log(popped); 
+// => [1, 2, 4, 5]
+```
+
+> `updateAt`
+
+```elixir
+@spec update_at(list(), integer(), any()) :: list()
+```
+
+Updates an item at the specified index in a list with a new value.
+
+```js
+const list = ["apple", "banana", "cherry"];
+const updated = updateAt(list, 1, "orange");
+console.log(updated); 
+// => ['apple', 'orange', 'cherry']
+```
+
+> `wrap`
+
+```elixir
+@spec wrap(any()) :: list()
+```
+
+Wraps a value in an array.
+
+```js
+const wrapped = wrap("Hello");
+console.log(wrapped); 
+// => ['Hello']
+```

@@ -1,0 +1,27 @@
+# Miscellaneous
+
+Some utilities that don't fit anywhere else.
+
+> `unless`
+
+```elixir
+@spec unless(boolean(), any(), any()) :: any()
+```
+
+Executes a callback function unless a condition is true. If the condition is true, undefined is returned.
+If the condition is false, the callback function is executed and its return value is returned.
+
+```js
+const person = {
+  name: "John",
+  canVote: false,
+  age: 30,
+};
+
+unless(person.age < 18, () => {
+  person.canVote = true;
+});
+
+console.log(person);
+// => { name: "John", age: 30, canVote: true }
+```
