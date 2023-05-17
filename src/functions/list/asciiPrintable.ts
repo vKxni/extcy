@@ -4,4 +4,4 @@ export function asciiPrintable(list: string[]): string[] {
 
 // const strings = ['Hello', 'World', 'Lol', '🚀', '123', 'αβγ'];
 // const filteredStrings = asciiPrintable(strings);
-// console.log(filteredStrings); // ['Hello', 'World', 'OpenAI', '123']
+// console.log(filteredStrings); // ['Hello', 'World', 'Lo', '123']
