@@ -128,6 +128,6 @@ console.log(person); // Output: { name: "John", age: 30, canVote: true }
 ```
 
 We offer a lot of utility functions to make your life easier. 
-Check out the [documentation](https://extcy.js.org) for more information.
+Check out the [documentation](https://extcy.vercel.app/) for more information.
 
 © Extcy 2022, [MIT Licence](/LICENSE), by [@vKxni](https://github.com/vKxni).
