@@ -32,7 +32,7 @@ export function uniqueBy<T, U>(list: T[], fn: (item: T) => U): T[] {
 
 //   const uniquePeople = uniqueBy(people, (person) => person.name);
 //   console.log(uniquePeople);
-//   // Output: [
-//   //   { name: 'Alice', age: 25 },
-//   //   { name: 'Bob', age: 30 },
-//   //   { name: 'Charlie', age
+//   Output: [
+//     { name: 'Alice', age: 25 },
+//     { name: 'Bob', age: 30 },
+//     { name: 'Charlie', age
