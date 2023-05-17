@@ -1,3 +1,12 @@
+/**
+ * Retrieves the value associated with the specified key from a map and removes the entry from the map.
+ * If the key does not exist, a default value is provided.
+ *
+ * @param {Map<K, V>} map - The map.
+ * @param {K} key - The key to retrieve and remove.
+ * @param {() => V} defaultValue - The function to provide the default value.
+ * @returns {V} - The value associated with the key or the default value.
+ */
 export function popLazy<K, V>(
   map: Map<K, V>,
   key: K,

@@ -1,3 +1,10 @@
+/**
+ * Checks if two maps are equal by comparing their sizes and values.
+ *
+ * @param {Map<any, any>} map1 - The first map.
+ * @param {Map<any, any>} map2 - The second map.
+ * @returns {boolean} - True if the maps are equal, false otherwise.
+ */
 export function mapEqual(map1: Map<any, any>, map2: Map<any, any>): boolean {
   if (map1.size !== map2.size) {
     return false;

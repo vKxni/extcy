@@ -1,3 +1,10 @@
+/**
+ * Filters an array based on a predicate function and returns a new array containing the rejected items.
+ *
+ * @param {T[]} array - The array to filter.
+ * @param {(item: T) => boolean} predicate - The predicate function.
+ * @returns {T[]} - The array of rejected items.
+ */
 export function reject<T>(array: T[], predicate: (item: T) => boolean): T[] {
   let rejectedItems: T[] = [];
 

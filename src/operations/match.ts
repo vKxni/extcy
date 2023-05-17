@@ -2,6 +2,13 @@ type Pattern<T> = {
   [K in keyof T]?: ((value: T[K]) => boolean) | Pattern<T[K]>;
 };
 
+/**
+ * Matches an object against a pattern and determines if it matches the pattern.
+ *
+ * @param {T} obj - The object to match.
+ * @param {Pattern<T>} pattern - The pattern to match against.
+ * @returns {boolean} - True if the object matches the pattern, false otherwise.
+ */
 export function match<T>(obj: T, pattern: Pattern<T>): boolean {
   const patternKeys = Object.keys(pattern);
   for (let i = 0; i < patternKeys.length; i++) {

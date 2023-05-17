@@ -2,6 +2,14 @@ type MapType<T> = {
   [key: string]: T;
 };
 
+/**
+ * Updates the value associated with the specified key in a map by applying a transformation function to it.
+ *
+ * @param {MapType<V>} map - The map.
+ * @param {K} key - The key to update.
+ * @param {(value: V | undefined) => V} transform - The transformation function to apply to the value.
+ * @returns {MapType<V>} - The updated map.
+ */
 export function update<K extends string, V>(
   map: MapType<V>,
   key: K,

@@ -1,3 +1,11 @@
+/**
+ * Adds a key-value pair to a map if the key does not already exist.
+ *
+ * @param {Map<K, V>} map - The map.
+ * @param {K} key - The key to add.
+ * @param {() => V} valueProvider - The function to provide the value if the key does not exist.
+ * @returns {Map<K, V>} - The updated map.
+ */
 export function mapPutNewLazy<K, V>(
   map: Map<K, V>,
   key: K,
