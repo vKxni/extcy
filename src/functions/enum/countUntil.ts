@@ -1,3 +1,10 @@
+/**
+ * Counts the number of items in an array until a condition is met.
+ *
+ * @param {T[]} list - The array to be counted.
+ * @param {(item: T) => boolean} condition - The condition function used to determine when to stop counting.
+ * @returns {number} - The count of items until the condition is met.
+ */
 export function countUntil<T>(
   list: T[],
   condition: (item: T) => boolean

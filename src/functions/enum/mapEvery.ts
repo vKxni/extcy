@@ -1,3 +1,11 @@
+/**
+ * Maps every nth element of an array using a callback function and returns the new array.
+ *
+ * @param {T[]} list - The array to be mapped.
+ * @param {number} n - The interval at which elements will be mapped.
+ * @param {(item: T) => T} callback - The callback function to be applied to each mapped element.
+ * @returns {T[]} - The updated array with mapped elements.
+ */
 export function mapEvery<T>(
   list: T[],
   n: number,

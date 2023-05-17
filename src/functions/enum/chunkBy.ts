@@ -1,3 +1,10 @@
+/**
+ * Splits an array into chunks based on a predicate function.
+ *
+ * @param {T[]} list - The array to be chunked.
+ * @param {(prev: T | undefined, current: T) => boolean} predicate - The predicate function used to determine chunk boundaries.
+ * @returns {T[][]} - An array of chunks.
+ */
 export function chunkBy<T>(
   list: T[],
   predicate: (prev: T | undefined, current: T) => boolean

@@ -1,3 +1,10 @@
+/**
+ * Inserts a separator element between each element of an array and returns the new array.
+ *
+ * @param {T[]} list - The array to insert the separator into.
+ * @param {T} separator - The separator element to be inserted.
+ * @returns {T[]} - The updated array with the separator inserted.
+ */
 export function introsperse<T>(list: T[], separator: T): T[] {
   return list.reduce((acc, cur, index) => {
     if (index !== 0) {

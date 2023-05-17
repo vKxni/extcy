@@ -1,3 +1,9 @@
+/**
+ * Shuffles the elements of an array randomly and returns the shuffled array.
+ *
+ * @param {T[]} list - The array to be shuffled.
+ * @returns {T[]} - The shuffled array.
+ */
 export function shuffle<T>(list: T[]): T[] {
   const shuffled = [...list];
   for (let i = shuffled.length - 1; i > 0; i--) {

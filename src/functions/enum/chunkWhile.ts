@@ -1,5 +1,12 @@
 type PredicateFunction<T> = (a: T, b: T) => boolean;
 
+/**
+ * Chunks an array into subarrays based on a predicate function.
+ *
+ * @param {T[]} list - The array to be chunked.
+ * @param {PredicateFunction<T>} predicate - The predicate function used to determine chunk boundaries.
+ * @returns {T[][]} - An array of chunks.
+ */
 export function chunkWhile<T>(
   list: T[],
   predicate: PredicateFunction<T>

@@ -1,3 +1,10 @@
+/**
+ * Drops every nth element from an array and returns a new array without those elements.
+ *
+ * @param {T[]} list - The array from which elements will be dropped.
+ * @param {number} n - The interval at which elements will be dropped.
+ * @returns {T[]} - The updated array without dropped elements.
+ */
 export function dropEvery<T>(list: T[], n: number): T[] {
   return list.filter((_, index) => (index + 1) % n !== 0);
 }

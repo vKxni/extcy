@@ -1,3 +1,12 @@
+/**
+ * Reduces two arrays into a single value by applying a function to each pair of corresponding elements.
+ *
+ * @param {T[]} arr1 - The first array to zip.
+ * @param {U[]} arr2 - The second array to zip.
+ * @param {V} initialAccumulator - The initial value of the accumulator.
+ * @param {(accumulator: V, a: T, b: U) => V} fn - The function to apply to each pair of corresponding elements.
+ * @returns {V} - The final value of the accumulator.
+ */
 export function zipReduce<T, U, V>(
   arr1: T[],
   arr2: U[],

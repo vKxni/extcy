@@ -1,3 +1,11 @@
+/**
+ * Sorts an array based on a key function and a custom compare function and returns the sorted array.
+ *
+ * @param {T[]} arr - The array to be sorted.
+ * @param {(item: T) => K} keyFn - The key function used to extract the key for comparison.
+ * @param {(a: K, b: K) => number} compareFn - The compare function used to compare the keys.
+ * @returns {T[]} - The sorted array.
+ */
 export function sortBy<T, K>(
   arr: T[],
   keyFn: (item: T) => K,

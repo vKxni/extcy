@@ -1,3 +1,11 @@
+/**
+ * Applies a function to each element of an array, accumulating the results into a new array.
+ *
+ * @param {T[]} list - The array to be scanned.
+ * @param {(acc: U, item: T) => U} fn - The scanning function that takes an accumulator and an array element and returns a new accumulator.
+ * @param {U} initial - The initial value of the accumulator.
+ * @returns {U[]} - The array of accumulated values.
+ */
 export function scan<T, U>(
   list: T[],
   fn: (acc: U, item: T) => U,

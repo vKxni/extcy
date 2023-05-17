@@ -1,3 +1,9 @@
+/**
+ * Removes duplicate elements from an array and returns a new array with unique elements.
+ *
+ * @param {T[]} list - The array to be deduplicated.
+ * @returns {T[]} - The deduplicated array.
+ */
 export function dedup<T>(list: T[]): T[] {
   return [...new Set(list)];
 }

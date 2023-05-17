@@ -1,3 +1,11 @@
+/**
+ * Groups elements of an array into an object based on a key returned by a key function.
+ *
+ * @param {T[]} list - The array to be grouped.
+ * @param {(item: T) => K} fn - The key function used to determine the grouping key.
+ * @param {Record<K, T[]>} initial - The initial object for grouping.
+ * @returns {Record<K, T[]>} - The grouped object.
+ */
 export function groupBy<T, K extends string | number | symbol>(
   list: T[],
   fn: (item: T) => K,
