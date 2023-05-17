@@ -11,6 +11,6 @@ export function each<T>(collection: T[], iteratee: (item: T) => void): void {
     }
   }
   
-  // const numbers = [1, 2, 3, 4];
-  // each(numbers, (num) => console.log(num)); // 1 2 3 4
+// const numbers = [1, 2, 3, 4];
+// each(numbers, (num) => console.log(num)); // 1 2 3 4
   
