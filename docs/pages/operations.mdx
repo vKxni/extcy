@@ -1,7 +1,6 @@
 # Extcy Operations
 
-In this chapter, we will learn how to use operations such as `pattern matching`, `cond`, `pipe`'ing and more. 
-
+In this chapter, we will learn how to use operations such as `pattern matching`, `cond`, `pipe`'ing and more.
 
 ### Pattern Matching
 
@@ -27,7 +26,7 @@ console.log(match(person1, pattern1)); // true
 
 The match operator is not only used to match against simple values, but it is also useful for destructuring more complex data types.
 
-### When 
+### When
 
 - https://hexdocs.pm/elixir/guards.html
 
@@ -65,7 +64,7 @@ function getColorName(color: Color): string {
 console.log(getColorName(Color.Red)); // "Red"
 console.log(getColorName(Color.Blue)); // "Blue"
 console.log(getColorName(Color.Green)); // "Green"
-``` 
+```
 
 ### Pipe
 
@@ -83,15 +82,15 @@ const capitalize = (str: string) => str.toUpperCase();
 const addExclamation = (str: string) => str + "!";
 const reverse = (str: string) => str.split("").reverse().join("");
 
-const result = pipe<string, string>(
+const result2 = pipe<string, string>(
   capitalize,
   addExclamation,
   reverse
 )("hello");
-console.log(result); //  !OLLEH
-``` 
+console.log(result2); //  !OLLEH
+```
 
-### Sigil 
+### Sigil
 
 - https://elixir-lang.org/getting-started/sigils.html
 

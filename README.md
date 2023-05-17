@@ -96,12 +96,12 @@ const capitalize = (str: string) => str.toUpperCase();
 const addExclamation = (str: string) => str + "!";
 const reverse = (str: string) => str.split("").reverse().join("");
 
-const result = pipe<string, string>(
+const result2 = pipe<string, string>(
   capitalize,
   addExclamation,
   reverse
 )("hello");
-console.log(result); //  !OLLEH
+console.log(result2); //  !OLLEH
 ```
 
 Powerful RegEx injection `sigil`
