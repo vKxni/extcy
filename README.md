@@ -39,7 +39,7 @@ const result = when(
 console.log(result); // odd
 ```
 
-Pattern matching, what else. `match`
+`match`
 
 ```ts
 const person1 = {
@@ -59,7 +59,7 @@ const pattern1 = {
 console.log(match(person1, pattern1)); // true
 ```
 
-A simple, yet powerful alternative to cases `cond`
+`cond`
 
 ```ts
 enum Color {
@@ -82,7 +82,7 @@ console.log(getColorName(Color.Blue)); // "Blue"
 console.log(getColorName(Color.Green)); // "Green"
 ```
 
-Piping to reduce nested function calls `pipe`
+`pipe`
 
 ```ts
 const addOne = (n: number) => n + 1;
@@ -104,14 +104,14 @@ const result2 = pipe<string, string>(
 console.log(result2); //  !OLLEH
 ```
 
-Powerful RegEx injection `sigil`
+`sigil`
 
 ```ts
 const capitalizedWords = sigil(/([A-Z]\w+)/g, "Hello World! This Is A Test");
 console.log(capitalizedWords); //  ['Hello', 'World', 'This', 'Is', 'Test']
 ```
 
-Guards `unless`
+`unless`
 
 ```ts
 const person = {
