@@ -1,7 +1,7 @@
 {
   "name": "extcy",
   "version": "1.1.5",
-  "description": "Powerful functional Elixir function composition for TypeScript",
+  "description": "Powerful functional Elixir composition for TypeScript.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
