@@ -1,3 +1,10 @@
+/**
+ * Sorts a list of objects based on a specific key.
+ *
+ * @param {Record<string, any>[]} list - The list of objects to sort.
+ * @param {string} key - The key to sort by.
+ * @returns {Record<string, any>[]} - The sorted list of objects.
+ */
 export function keySort(
   list: Record<string, any>[],
   key: string

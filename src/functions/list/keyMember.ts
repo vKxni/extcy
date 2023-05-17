@@ -1,3 +1,11 @@
+/**
+ * Checks if any object in a list has a specific key-value pair.
+ *
+ * @param {Record<string, any>[]} list - The list of objects.
+ * @param {string} key - The key to match against.
+ * @param {any} value - The value to match.
+ * @returns {boolean} - True if a match is found, false otherwise.
+ */
 export function keyMember(
   list: Record<string, any>[],
   key: string,

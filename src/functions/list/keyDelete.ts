@@ -1,3 +1,10 @@
+/**
+ * Deletes items from a list of objects based on a specific key value.
+ *
+ * @param {{ key: string; value: T }[]} list - The list of objects.
+ * @param {string} key - The key to match against.
+ * @returns {{ key: string; value: T }[]} - The filtered list of objects.
+ */
 export function keyDelete<T>(
   list: { key: string; value: T }[],
   key: string

@@ -1,3 +1,10 @@
+/**
+ * Finds the first item in a list of objects that matches a specific key value.
+ *
+ * @param {{ key: string; value: T }[]} list - The list of objects.
+ * @param {string} key - The key to match against.
+ * @returns {{ key: string; value: T } | undefined} - The matching object or undefined if no match is found.
+ */
 export function keyFind<T>(
   list: { key: string; value: T }[],
   key: string

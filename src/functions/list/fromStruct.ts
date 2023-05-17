@@ -1,3 +1,9 @@
+/**
+ * Converts a struct-like object to a regular object where the keys are of type keyof T and the values are of type unknown.
+ *
+ * @param {T extends Record<string, unknown>} struct - The struct-like object.
+ * @returns {Record<keyof T, unknown>} - The regular object.
+ */
 export function fromStruct<T extends Record<string, unknown>>(
   struct: T
 ): Record<keyof T, unknown> {
