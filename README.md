@@ -90,8 +90,11 @@ console.log(result); // 64
 `sigil`
 
 ```ts
-const capitalizedWords = sigil(/([A-Z]\w+)/g, "Hello World! This Is A Test");
-console.log(capitalizedWords); // ['Hello', 'World', 'This', 'Is', 'Test']
+const capitalizedWords = sigil(/([A-Z]\w+)/g, "hello world this is a test");
+const numbers = sigil(/\d+/g, "I have 3 apples and 5 oranges.");
+  
+console.log(capitalizedWords); // ["Hello", "World", "This", "Is", "A", "Test"]
+console.log(numbers); // ["3", "5"]
 ```
 
 We offer a lot of more utility functions and modules to make your life easier.
