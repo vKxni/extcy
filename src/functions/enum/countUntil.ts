@@ -9,13 +9,16 @@ export function countUntil<T>(
   list: T[],
   condition: (item: T) => boolean
 ): number {
-  let count = 0;
-  for (const item of list) {
-    if (condition(item)) {
+  let count: number = 0;
+  const length = list.length;
+
+  for (let i = 0; i < length; i++) {
+    if (condition(list[i])) {
       break;
     }
     count++;
   }
+
   return count;
 }
 

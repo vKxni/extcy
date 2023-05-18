@@ -9,11 +9,17 @@ export function findValue<TKey, TValue>(
   map: Map<TKey, TValue>,
   predicate: (value: TValue) => boolean
 ): TValue | undefined {
-  for (const [key, value] of map.entries()) {
-    if (predicate(value)) {
+  const keys = Array.from(map.keys());
+  const length = keys.length;
+
+  for (let i = 0; i < length; i++) {
+    const key = keys[i];
+    const value = map.get(key);
+    if (value !== undefined && predicate(value)) {
       return value;
     }
   }
+
   return undefined;
 }
 

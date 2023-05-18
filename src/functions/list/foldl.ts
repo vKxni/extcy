@@ -12,9 +12,13 @@ export function foldl<T, U>(
   fn: (acc: U, current: T) => U
 ): U {
   let result = accumulator;
-  for (const item of list) {
+  const length = list.length;
+
+  for (let i = 0; i < length; i++) {
+    const item = list[i];
     result = fn(result, item);
   }
+
   return result;
 }
 
@@ -25,4 +29,3 @@ export function foldl<T, U>(
 // const words = ['Hello', 'World', '!'];
 // const concatenated = foldl(words, '', (acc, current) => acc + ' ' + current);
 // console.log(concatenated); // ' Hello World !'
-

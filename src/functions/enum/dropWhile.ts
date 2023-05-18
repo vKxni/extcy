@@ -7,12 +7,15 @@
  */
 export function dropWhile<T>(list: T[], condition: (item: T) => boolean): T[] {
   let dropIndex = 0;
-  for (const [index, item] of list.entries()) {
-    if (!condition(item)) {
-      dropIndex = index;
+  const length = list.length;
+
+  for (let i = 0; i < length; i++) {
+    if (!condition(list[i])) {
+      dropIndex = i;
       break;
     }
   }
+
   return list.slice(dropIndex);
 }
 
