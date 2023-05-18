@@ -42,21 +42,12 @@ console.log(result); // odd
 `match`
 
 ```ts
-const person1 = {
-  name: "Alice",
-  age: 30,
-  address: {
-    city: "San Francisco",
-    state: "California",
-  },
-};
-
-const pattern1 = {
+const pattern = {
   name: "Alice",
   age: (age: number) => age >= 30,
   address: { state: "California" },
 };
-console.log(match(person1, pattern1)); // true
+console.log(match(person, pattern)); // true
 ```
 
 `cond`
@@ -91,17 +82,6 @@ const square = (n: number) => n * n;
 
 const result = pipe<number, number>(addOne, double, square)(3);
 console.log(result); // 64
-
-const capitalize = (str: string) => str.toUpperCase();
-const addExclamation = (str: string) => str + "!";
-const reverse = (str: string) => str.split("").reverse().join("");
-
-const result2 = pipe<string, string>(
-  capitalize,
-  addExclamation,
-  reverse
-)("hello");
-console.log(result2); //  !OLLEH
 ```
 
 `sigil`

@@ -47,7 +47,6 @@ export * from "./functions/list/keyFind";
 export * from "./functions/list/keyMember";
 export * from "./functions/list/keySort";
 export * from "./functions/list/keyStore";
-export * from "./functions/list/myersDifferance";
 export * from "./functions/list/popAt";
 export * from "./functions/list/updateAt";
 export * from "./functions/list/wrap";
