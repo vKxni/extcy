@@ -18,13 +18,50 @@ Want to feel the magic of functional programming, directly in your NodeJS projec
 
 Elixir has one of the most powerful standard libraries of any language. It's also one of the most enjoyable languages to write in. Extcy brings the best of Elixir to TypeScript, with a focus on functional programming and immutability. Pattern matching, pipe operators, and much more aren't a problem anymore. Perfect for everyone who doesn't want to write in Elixir, but still wants to use its powerful utilities to avoid repeating themselves.
 
-## Installation
+# Installation
 
 ```bash
 npm install extcy
 ```
 
-### Examples
+## Examples
+
+`groupBy`
+
+```ts
+const list = [1, 2, 3, 4, 5];
+const result = groupBy(list, (x) => (x % 2 === 0 ? "even" : "odd"));
+console.log(result); // { odd: [ 1, 3, 5 ], even: [ 2, 4 ] }
+```
+
+`introsperse`
+
+```ts
+const list = [1, 2, 3];
+const result = introsperse(list, 0);
+console.log(result); // [1, 0, 2, 0, 3]
+```
+
+`frequencies`
+
+```ts
+const numbers = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4];
+const frequencyMap = frequencies(numbers);
+console.log(frequencyMap); // { 1 => 1, 2 => 2, 3 => 3, 4 => 4 }
+```
+
+`keySort`
+
+```ts
+const data = [
+  { id: 3, name: "Alice" },
+  { id: 1, name: "John" },
+  { id: 2, name: "Jane" },
+];
+
+const sortedData = keySort(data, "id");
+console.log(sortedData); // [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }, { id: 3, name: 'Alice' }]
+```
 
 `when`
 
@@ -37,40 +74,6 @@ const result = when(
 );
 
 console.log(result); // odd
-```
-
-`match`
-
-```ts
-const pattern = {
-  name: "Alice",
-  age: (age: number) => age >= 30,
-  address: { state: "California" },
-};
-console.log(match(person, pattern)); // true
-```
-
-`cond`
-
-```ts
-enum Color {
-  Red = "red",
-  Blue = "blue",
-  Green = "green",
-}
-
-function getColorName(color: Color): string {
-  return cond(
-    color,
-    { predicate: (c) => c === Color.Red, result: "Red" },
-    { predicate: (c) => c === Color.Blue, result: "Blue" },
-    { predicate: (c) => c === Color.Green, result: "Green" }
-  );
-}
-
-console.log(getColorName(Color.Red)); // "Red"
-console.log(getColorName(Color.Blue)); // "Blue"
-console.log(getColorName(Color.Green)); // "Green"
 ```
 
 `pipe`
@@ -88,26 +91,10 @@ console.log(result); // 64
 
 ```ts
 const capitalizedWords = sigil(/([A-Z]\w+)/g, "Hello World! This Is A Test");
-console.log(capitalizedWords); //  ['Hello', 'World', 'This', 'Is', 'Test']
+console.log(capitalizedWords); // ['Hello', 'World', 'This', 'Is', 'Test']
 ```
 
-`unless`
-
-```ts
-const person = {
-  name: "John",
-  canVote: false,
-  age: 30,
-};
-
-unless(person.age < 18, () => {
-  person.canVote = true;
-});
-
-console.log(person); // Output: { name: "John", age: 30, canVote: true }
-```
-
-We offer a lot of utility functions to make your life easier. 
-Check out the [documentation](https://extcy.vercel.app/) for more information.
+We offer a lot of more utility functions and modules to make your life easier.
+Check out the **[documentation](https://extcy.vercel.app/)** for more information.
 
 © Extcy 2022, [MIT Licence](/LICENSE), by [@vKxni](https://github.com/vKxni).
