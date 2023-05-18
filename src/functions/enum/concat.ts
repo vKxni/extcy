@@ -27,4 +27,4 @@ export function concatLists<T>(list1: T[], list2: T[]): T[] {
 //     ])
 //   ); // Output: [1, 2, 3, 4, 5, 6]
 
-//   console.log(concat_lists([1, [2], 3], [4, 5, 6])); // Output: [ 1, [ 2 ], 3, 4, 5, 6 ]
+//   console.log(concatLists([1, [2], 3], [4, 5, 6])); // [ 1, [ 2 ], 3, 4, 5, 6 ]
