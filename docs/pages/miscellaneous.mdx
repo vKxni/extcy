@@ -4,8 +4,8 @@ Some utilities that don't fit anywhere else.
 
 > `unless`
 
-```elixir
-@spec unless(boolean(), any(), any()) :: any()
+```ts
+unless(condition: boolean, thenValue: any, elseValue: any): any
 ```
 
 Executes a callback function unless a condition is true. If the condition is true, undefined is returned.

@@ -7,7 +7,9 @@ Maps can be created with the %{} syntax, and key-value pairs can be expressed as
 > `getAndUpdate`
 
 ```elixir 
-@spec get_and_update(map(), key(), (value() -> {get, value()} | :pop)) :: {get, map()}
+type GetAndUpdateCallback<T> = () => { kind: 'get', value: T } | 'pop';
+
+getAndUpdate<T>(value: Map<any, T>, key: any, callback: GetAndUpdateCallback<T>): { kind: 'get', value: T } | { kind: 'pop' };
 ```
 
 Retrieves the value associated with the specified key from a map, applies an update function to it, and sets the updated value back into the map.
@@ -26,7 +28,9 @@ console.log(myMap);
 > `getLazy`
 
 ```elixir
-@spec get_lazy(map(), key(), (() -> value())) :: value()
+type GetLazyCallback<T> = () => T;
+
+getLazy<T>(value: Map<any, T>, key: any, callback: GetLazyCallback<T>): T;
 ```
 
 Retrieves the value associated with the specified key from a map. If the key does not exist, a default value is created and set into the map.
@@ -44,7 +48,7 @@ console.log(value);
 > `mapEqual`
 
 ```elixir
-@spec map_equal(map(), map()) :: boolean()
+mapEqual<T>(value1: Map<any, T>, value2: Map<any, T>): boolean;
 ```
 
 Checks if two maps are equal by comparing their sizes and values.
@@ -75,7 +79,9 @@ console.log(mapEqual(map1, map3));
 > `mapPutNewLazy`
 
 ```elixir
-@spec map_put_new_lazy(map(), key(), (() -> value())) :: map()
+type MapPutNewLazyCallback<T> = () => T;
+
+function mapPutNewLazy<T>(value: Map<any, T>, key: any, callback: MapPutNewLazyCallback<T>): Map<any, T>;
 ```
 
 Adds a key-value pair to a map if the key does not already exist.
@@ -96,7 +102,7 @@ console.log(map);
 > `mapValues`
 
 ```elixir
-@spec map_values(map()) :: list(value())
+function mapValues<T>(value: Map<any, T>): T[];
 ```
 
 Retrieves an array of values from a map.
@@ -116,7 +122,9 @@ console.log(values);
 > `popLazy`
 
 ```elixir
-@spec pop_lazy(map(), key(), (() -> value())) :: value()
+type PopLazyCallback<T> = () => T;
+
+function popLazy<T>(value: Map<any, T>, key: any, callback: PopLazyCallback<T>): T;
 ```
 
 Retrieves the value associated with the specified key from a map and removes the entry from the map.
@@ -140,7 +148,9 @@ console.log(nonExistentValue);
 > `reject`
 
 ```elixir
-@spec reject(map(), (key(), value()) -> boolean()) :: map()
+type RejectCallback<T> = (key: any, value: T) => boolean;
+
+function reject<T>(value: Map<any, T>, callback: RejectCallback<T>): Map<any, T>;
 ```
 
 Filters an array based on a predicate function and returns a new array containing the rejected items.
@@ -156,7 +166,9 @@ console.log(oddNumbers);
 > `update`
 
 ```elixir
-@spec update(map(), key(), (value() -> value())) :: map()
+type UpdateCallback<T> = () => T;
+
+function update<T>(value: Map<any, T>, key: any, callback: UpdateCallback<T>): Map<any, T>;
 ```
 
 Updates the value associated with the specified key in a map by applying a transformation function to it.

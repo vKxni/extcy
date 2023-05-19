@@ -4,10 +4,10 @@ Linked lists hold zero, one, or more elements in the chosen order. Also called "
 
 > `asciiPrintable`
 
-```elixir 
-@spec ascii_printable?(list(), 0) :: true
-@spec ascii_printable?([], limit) :: true when limit: :infinity | pos_integer()
-@spec ascii_printable?([...], limit) :: boolean()
+```ts 
+ascii_printable(value: unknown[], limit: 0): true;
+ascii_printable(value: unknown[], limit: number | "infinity"): true;
+ascii_printable(value: unknown[], limit: number): boolean;
 ```
 
 Filters a list of strings to only include those that contain printable ASCII characters.
@@ -21,10 +21,10 @@ console.log(filteredStrings);
 
 > `duplicate`
     
-```elixir
-@spec duplicate(list(), 0) :: list()
-@spec duplicate([], limit) :: list() when limit: :infinity | pos_integer()
-@spec duplicate([...], limit) :: list() when limit: :infinity | pos_integer()
+```ts
+duplicate<T>(value: T[], limit: 0): T[];
+duplicate<T>(value: T[], limit: number | "infinity"): T[];
+duplicate<T>(value: T[], limit: number): T[];
 ```
 
 Creates a new list by concatenating the given list with itself.
@@ -38,8 +38,8 @@ console.log(duplicatedFruits);
 
 > `flattenList`
 
-```elixir
-@spec flatten_list(list()) :: list()
+```ts
+flattenList<T>(value: T[]): T[];
 ```
 
 Flattens a list of arrays into a single-level array.
@@ -57,8 +57,8 @@ console.log(flattenedList);
 
 > `foldl`
 
-```elixir
-@spec foldl(list(), function(), any()) :: any()
+```ts
+foldl<T>(value: T[], func: (acc: any, element: T) => any, initial: any): any;
 ```
 
 Applies a function to each element of a list from left to right and accumulates the results.
@@ -77,8 +77,8 @@ console.log(concatenated);
 
 > `foldr`
 
-```elixir
-@spec foldr(list(), function(), any()) :: any()
+```ts
+foldr<T>(value: T[], func: (element: T, acc: any) => any, initial: any): any;
 ```
 
 Applies a function to each element of a list from right to left and accumulates the results.
@@ -97,8 +97,8 @@ console.log(concatenated);
 
 > `frequencies`
 
-```elixir
-@spec frequencies(list()) :: map()
+```ts
+frequencies<T>(value: T[]): Map<T, number>;
 ```
 
 Counts the frequencies of elements in a collection and returns a Map with the elements as keys and their frequencies as values.
@@ -112,8 +112,8 @@ console.log(frequencyMap);
 
 > `fromStruct`
 
-```elixir
-@spec from_struct(struct()) :: map()
+```ts
+fromStruct(value: Record<string, any>): Map<string, any>;
 ```
 
 Converts a struct-like object to a regular object where the keys are of type keyof T and the values are of type unknown.
@@ -127,8 +127,8 @@ console.log(myMap);
 
 > `keyDelete`
 
-```elixir
-@spec key_delete(map(), key()) :: map()
+```ts
+keyDelete<T>(value: Map<T, any>, key: T): Map<T, any>;
 ```
 
 Deletes items from a list of objects based on a specific key value.
@@ -148,8 +148,8 @@ console.log(filtered);
 
 > `keyFind`
 
-```elixir
-@spec key_find(map(), key()) :: any()
+```ts
+keyFind<T>(value: Map<T, any>, key: T): any;
 ```
 
 Finds the first item in a list of objects that matches a specific key value.
@@ -173,8 +173,8 @@ console.log(notFound);
 
 > `keyMember`
 
-```elixir
-@spec key_member(map(), key()) :: boolean()
+```ts
+keyMember<T>(value: Map<T, any>, key: T): boolean;
 ```
 
 Checks if any object in a list has a specific key-value pair.
@@ -195,8 +195,8 @@ console.log(keyMember(data, "name", "Bob"));
 
 > `keySort`
 
-```elixir
-@spec key_sort(map(), key()) :: list()
+```ts
+keySort<T>(value: Map<T, any>, key: T): T[];
 ```
 
 Sorts a list of objects based on a specific key.
@@ -215,8 +215,8 @@ console.log(sortedData);
 
 > `keyStore`
 
-```elixir
-@spec key_store(map(), key()) :: map()
+```ts
+keyStore<T>(value: Map<T, any>, key: T): Map<T, any>;
 ```
 
 Transforms a list of items into an array of key-value tuples where the value is set to a default value for items with a specific key.
@@ -240,8 +240,8 @@ console.log(result);
 
 > `popAt`
 
-```elixir
-@spec pop_at(list(), integer()) :: list()
+```ts
+popAt<T>(value: T[], index: number): T[];
 ```
 
 Removes an item at the specified index from a list.
@@ -255,8 +255,8 @@ console.log(popped);
 
 > `updateAt`
 
-```elixir
-@spec update_at(list(), integer(), any()) :: list()
+```ts
+updateAt<T>(value: T[], index: number, newValue: T): T[];
 ```
 
 Updates an item at the specified index in a list with a new value.
@@ -270,8 +270,8 @@ console.log(updated);
 
 > `wrap`
 
-```elixir
-@spec wrap(any()) :: list()
+```ts
+wrap(value: any): any[];
 ```
 
 Wraps a value in an array.

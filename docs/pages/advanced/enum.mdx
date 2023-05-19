@@ -4,8 +4,8 @@ Provides a set of algorithms to work with enumerables.
 
 > `chunkBy`
 
-```elixir
-@spec chunk_by(t(), (element() -> any())) :: [list()]
+```ts
+chunk_by<T>(value: T[], callback: () => any): T[][]
 ```
 
 Splits enumerable on every element for which fun returns a new value.
@@ -21,8 +21,8 @@ console.log(
 
 > `chunkEvery`
 
-```elixir
-@spec chunk_every(t(), pos_integer()) :: [list()]
+```ts
+chunkEvery(value: string[], size: number): string[][]
 ```
 
 Chunks an array into subarrays of a specified size.
@@ -35,13 +35,13 @@ console.log(chunkEvery(list, 3));
 
 > `chunkWhile`
 
-```elixir
-@spec chunk_while(
-  t(),
-  acc(),
-  (element(), acc() -> {:cont, chunk, acc()} | {:cont, acc()} | {:halt, acc()}),
-  (acc() -> {:cont, chunk, acc()} | {:cont, acc()})
-) :: Enumerable.t()
+```ts
+chunkWhile(
+  value: string[],
+  acc: any,
+  callback: (element: string, acc: any) => { kind: 'cont', chunk: string[], acc: any } | { kind: 'halt', acc: any },
+  accCallback: (acc: any) => { kind: 'cont', chunk: string[], acc: any } | { kind: 'halt', acc: any }
+): any
 ```
 
 Chunks an enumerable into lists of elements while the given predicate returns true.
@@ -61,12 +61,12 @@ console.log(oddChunks);
 
 > `concat`, `concatLists`
 
-```elixir
-@spec concat(t(), t()) :: t()
+```ts
+concat(value1: string[], value2: string[]): string[]
 ```
 
-```elixir
-@spec concat_lists([t()]) :: t()
+```ts
+concatLists(values: string[][]): string[]
 ```
 
 Given an enumerable of enumerables, concatenates the enumerables into a single list.
@@ -87,8 +87,8 @@ console.log(concatLists([1, [2], 3], [4, 5, 6]));
 
 > `countUntil`
 
-```elixir
-@spec count_until(t(), (element() -> boolean())) :: non_neg_integer()
+```ts
+countUntil(value: string[], callback: (element: string) => boolean): number
 ```
 
 Counts the number of elements in the enumerable until the given predicate returns false.
@@ -103,8 +103,8 @@ console.log(count);
 
 > `dedup`
 
-```elixir
-@spec dedup(t()) :: t()
+```ts
+dedup(value: string[]): string[]
 ```
 
 Removes duplicate elements from an array and returns a new array with unique elements.
@@ -118,8 +118,8 @@ console.log(deduplicatedList);
 
 > `deleteItem`
 
-```elixir
-@spec delete_item(t(), element()) :: t()
+```ts
+deleteItem(value: string[], item: string): string[]
 ```
 
 Deletes all occurrences of an item from an array and returns a new array without the item.
@@ -132,8 +132,8 @@ console.log(updatedNumbers); // Output: [1, 2, 4, 5]
 
 > `dropEvery`
 
-```elixir
-@spec drop_every(t(), pos_integer()) :: t()
+```ts
+dropEvery(value: string[], count: number): string[]
 ```
 
 Drops every nth element from an array and returns a new array without those elements.
@@ -146,8 +146,8 @@ console.log(dropEvery(list, 3));
 
 > `dropWhile`
 
-```elixir
-@spec drop_while(t(), (element() -> boolean())) :: t()
+```ts
+dropWhile(value: string[], callback: (element: string) => boolean): string[]
 ```
 
 Drops elements from the beginning of an array until the condition is no longer satisfied and returns a new array without those elements.
@@ -162,8 +162,8 @@ console.log(result);
 
 > `each`
     
-```elixir
-@spec each(t(), (element() -> any())) :: t()
+```ts
+each(value: string[], callback: (element: string) => any): string[]
 ```
 
 Iterates over an array and applies the given function to each element.
@@ -176,8 +176,8 @@ each(numbers, (num) => console.log(num));
 
 > `findIndex`
 
-```elixir
-@spec find_index(t(), (element() -> boolean())) :: non_neg_integer() | nil
+```ts
+findIndex(value: string[], callback: (element: string) => boolean): number | null
 ```
 
 Finds the index of the first element in a collection that satisfies the provided predicate function.
@@ -191,8 +191,8 @@ console.log(index);
 
 > `findValue`
 
-```elixir
-@spec find_value(t(), (element() -> boolean())) :: any() | nil
+```ts
+findValue(value: string[], callback: (element: string) => boolean): string | null
 ```
 
 Finds the first value in a map that satisfies the provided predicate function.
@@ -211,13 +211,16 @@ console.log(value);
 
 > `flatMapReduce`
 
-```elixir
-@spec flat_map_reduce(
-  t(),
-  (element() -> t()),
-  (element(), element() -> element()),
-  (element(), element() -> element())
-) :: any()
+```ts
+type FlatMapReduceCallback<T> = () => T;
+type FlatMapReduceAccCallback<T> = (element1: T, element2: T) => T;
+
+flatMapReduce<T>(
+  value: T[],
+  mapCallback: FlatMapReduceCallback<T>,
+  reduceCallback1: FlatMapReduceAccCallback<T>,
+  reduceCallback2: FlatMapReduceAccCallback<T>
+): any
 ```
 
 Applies a mapper function to each element in an array, flattens the resulting arrays, and reduces them into a single value using a reducer function.
@@ -232,8 +235,10 @@ console.log(flatMapReduce(list, mapper, reducer));
 
 > `groupBy`
   
-```elixir
-@spec group_by(t(), (element() -> any())) :: MapSet.t()
+```ts
+type GroupByCallback<T> = () => any;
+
+groupBy<T>(value: T[], callback: GroupByCallback<T>): Map<T, Set<T>>
 ```
 
 Groups elements of an array into an object based on a key returned by a key function.
@@ -247,8 +252,8 @@ console.log(result);
 
 > `into`
 
-```elixir
-@spec into(t(), t()) :: t()
+```ts
+into<T>(value1: T[], value2: T[]): T[] 
 ```
 
 Adds an element to the end of an array and returns the new array.
@@ -263,8 +268,8 @@ console.log(into([1, 2, 3, 4], 5));
 
 > `introsperse`
 
-```elixir
-@spec introsperse(t(), element()) :: t()
+```ts
+introsperse<T>(value: T[], element: T): T[]
 ```
 
 Inserts a separator element between each element of an array and returns the new array.
@@ -283,8 +288,10 @@ console.log(result2);
 
 > `mapEvery`
 
-```elixir
-@spec map_every(t(), (element() -> any())) :: t()
+```ts
+type MapEveryCallback<T> = () => any;
+
+mapEvery<T>(value: T[], callback: MapEveryCallback<T>): T[] 
 ```
 
 Maps every nth element of an array using a callback function and returns the new array.
@@ -298,8 +305,8 @@ console.log(result);
 
 > `mapFetch`
 
-```elixir
-@spec map_fetch(t(), (element() -> any())) :: t()
+```ts
+mapFetch<T>(value: T[], callback: MapEveryCallback<T>): T[]
 ```
 
 Retrieves the value associated with the specified key from a map.
@@ -319,12 +326,16 @@ console.log(mapFetch(fruitMap, 'grape'));
 
 > `mapReduce`
 
-```elixir
-@spec map_reduce(
-  t(),
-  (element() -> any()),
-  (element(), element() -> element())
-) :: any()
+```ts
+
+type MapReduceCallback<T> = () => any;
+type MapReduceAccCallback<T> = (element1: T, element2: T) => T;
+
+mapReduce<T>(
+  value: T[],
+  mapCallback: MapReduceCallback<T>,
+  reduceCallback: MapReduceAccCallback<T>
+): any 
 ```
 
 Maps each element of an array using a mapper function and reduces the mapped values into a single result using a reducer function.
@@ -343,8 +354,8 @@ console.log(result);
 
 > `maxBy`
 
-```elixir
-@spec max_by(t(), (element() -> any())) :: any()
+```ts
+maxBy<T>(value: T[], callback: MapEveryCallback<T>): any
 ```
 
 Finds the maximum value in an array based on a selector function.
@@ -368,8 +379,8 @@ console.log(oldestPerson);
 
 > `minMaxBy`
 
-```elixir
-@spec min_max_by(t(), (element() -> any())) :: {any(), any()}
+```ts
+minMaxBy<T>(value: T[], callback: MapEveryCallback<T>): [any, any]
 ```
 
 Finds the minimum and maximum values in an array based on a selector function and a custom comparer function.
@@ -387,8 +398,8 @@ console.log(`Min: ${min}, Max: ${max}`);
 
 > `reverseSlice`
 
-```elixir
-@spec reverse_slice(t(), integer(), integer()) :: t()
+```ts
+reverseSlice<T>(value: T[], start: number, end: number): T[]
 ```
 
 Creates a new array by reversing a section of an existing array.
@@ -402,8 +413,10 @@ console.log(result);
 
 > `scan`
 
-```elixir
-@spec scan(t(), (element(), element() -> element())) :: t()
+```ts
+type ScanCallback<T> = (element1: T, element2: T) => T;
+
+scan<T>(value: T[], callback: ScanCallback<T>): T[]
 ```
 
 Applies a function to each element of an array, accumulating the results into a new array.
@@ -417,8 +430,8 @@ console.log(result);
 
 > `takeEvery`
 
-```elixir
-@spec take_every(t(), integer()) :: t()
+```ts
+takeEvery<T>(value: T[], nth: number): T[]
 ```
 
 Takes every nth element from an array and returns a new array.
@@ -432,8 +445,8 @@ console.log(result);
 
 > `takeRandom`
 
-```elixir
-@spec take_random(t(), integer()) :: t()
+```ts
+takeRandom<T>(value: T[], count: number): T[]
 ```
 
 Takes a random sample of elements from an array and returns a new array.
@@ -447,8 +460,8 @@ console.log(randomNumbers);
 
 > `uniq`
 
-```elixir
-@spec uniq(t()) :: t()
+```ts
+uniq<T>(value: T[]): T[] 
 ```
 
 Removes duplicate elements from an array and returns a new array with unique elements.
@@ -462,8 +475,10 @@ console.log(uniqueNumbers);
 
 > `uniqBy`
 
-```elixir
-@spec uniq_by(t(), (element() -> any())) :: t()
+```ts
+type UniqByCallback<T> = () => any;
+
+uniqBy<T>(value: T[], callback: UniqByCallback<T>): T[] 
 ```
 
 Removes duplicate elements from an array based on a key function and returns a new array with unique elements.
@@ -492,8 +507,8 @@ console.log(uniquePeople);
 
 > `unzip`
 
-```elixir
-@spec unzip(t()) :: {t(), t()}
+```ts
+unzip<T>(value: [T, T][]): [T[], T[]]
 ```
 
 Unzips an array of tuples into separate arrays for each element position.
@@ -515,9 +530,15 @@ console.log(numbers);
 
 > `withIndex`
 
+```ts
+type WithIndexCallback<T> = (element: T, index: number) => any;
+
+function withIndex<T>(value: T[], callback: WithIndexCallback<T>): T[] 
+```
+
 Applies a function to each element of an array along with its index.
 
-```js
+```ts
 const array = ["apple", "banana", "cherry"];
 withIndex(array, (item, index) => {
   console.log(`Item: ${item}, Index: ${index}`); 
@@ -525,19 +546,17 @@ withIndex(array, (item, index) => {
 // => Item: apple, Index: 0 Item: banana, Index: 1 Item: cherry, Index: 2
 ```
 
-> `zipReduce.ts`
+> `zipReduce`
 
-```elixir
-@spec zip_reduce(
-  t(),
-  t(),
-  (element(), element() -> element())
-) :: t()
+```ts
+type ZipReduceCallback<T> = (element1: T, element2: T) => T;
+
+function zipReduce<T>(value1: T[], value2: T[], callback: ZipReduceCallback<T>): T[] 
 ```
 
 Reduces two arrays into a single value by applying a function to each pair of corresponding elements.
 
-```js
+```ts
 const arr1 = [1, 2, 3];
 const arr2 = [4, 5, 6];
 
@@ -548,17 +567,13 @@ console.log(result);
 
 > `zipWith`
 
-```elixir
-@spec zip_with(
-  t(),
-  t(),
-  (element(), element() -> element())
-) :: t()
+```ts
+zipWith<T>(value1: T[], value2: T[], callback: ZipReduceCallback<T>): T[
 ```
 
 Applies a function to each pair of corresponding elements from two arrays and returns a new array of the results.
 
-```js
+```ts
 const arr1 = [1, 2, 3];
 const arr2 = [4, 5, 6];
 
