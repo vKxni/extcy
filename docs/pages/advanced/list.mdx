@@ -1,105 +1,77 @@
-# List 
+# List
 
 Linked lists hold zero, one, or more elements in the chosen order. Also called "arrays" in other languages.
 
 > `asciiPrintable`
 
-```ts 
-ascii_printable(value: unknown[], limit: 0): true;
-ascii_printable(value: unknown[], limit: number | "infinity"): true;
-ascii_printable(value: unknown[], limit: number): boolean;
-```
-
 Filters a list of strings to only include those that contain printable ASCII characters.
 
 ```js
-const strings = ['Hello', 'World', 'Lol', '🚀', '123', 'αβγ'];
+const strings = ["Hello", "World", "Lol", "🚀", "123", "αβγ"];
 const filteredStrings = asciiPrintable(strings);
-console.log(filteredStrings); 
+console.log(filteredStrings);
 // => ['Hello', 'World', 'LoL', '123']
 ```
 
 > `duplicate`
-    
-```ts
-duplicate<T>(value: T[], limit: 0): T[];
-duplicate<T>(value: T[], limit: number | "infinity"): T[];
-duplicate<T>(value: T[], limit: number): T[];
-```
 
 Creates a new list by concatenating the given list with itself.
 
 ```js
 const fruits = ["apple", "banana", "orange"];
 const duplicatedFruits = duplicateItems(fruits);
-console.log(duplicatedFruits); 
+console.log(duplicatedFruits);
 // => ['apple', 'banana', 'orange', 'apple', 'banana', 'orange']
 ```
 
 > `flattenList`
 
-```ts
-flattenList<T>(value: T[]): T[];
-```
-
 Flattens a list of arrays into a single-level array.
 
 ```js
 const nestedList = [
- [1, 2, 3],
- [4, 5],
- [6, 7, 8, 9],
+  [1, 2, 3],
+  [4, 5],
+  [6, 7, 8, 9],
 ];
 const flattenedList = flattenList(nestedList);
-console.log(flattenedList); 
+console.log(flattenedList);
 // => [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
 > `foldl`
-
-```ts
-foldl<T>(value: T[], func: (acc: any, element: T) => any, initial: any): any;
-```
 
 Applies a function to each element of a list from left to right and accumulates the results.
 
 ```js
 const numbers = [1, 2, 3, 4, 5];
 const sum = foldl(numbers, 0, (acc, current) => acc + current);
-console.log(sum); 
+console.log(sum);
 // => 15
 
-const words = ['Hello', 'World', '!'];
-const concatenated = foldl(words, '', (acc, current) => acc + ' ' + current);
-console.log(concatenated); 
+const words = ["Hello", "World", "!"];
+const concatenated = foldl(words, "", (acc, current) => acc + " " + current);
+console.log(concatenated);
 // => ' Hello World !'
 ```
 
 > `foldr`
-
-```ts
-foldr<T>(value: T[], func: (element: T, acc: any) => any, initial: any): any;
-```
 
 Applies a function to each element of a list from right to left and accumulates the results.
 
 ```js
 const numbers = [1, 2, 3, 4, 5];
 const sum = foldr(numbers, 0, (value, acc) => value + acc);
-console.log(sum); 
+console.log(sum);
 // => 15
 
-const words = ['Hello', 'World', '!'];
-const concatenated = foldr(words, '', (acc, current) => acc + ' ' + current);
-console.log(concatenated); 
+const words = ["Hello", "World", "!"];
+const concatenated = foldr(words, "", (acc, current) => acc + " " + current);
+console.log(concatenated);
 // => 'Hello World !'
 ```
 
 > `frequencies`
-
-```ts
-frequencies<T>(value: T[]): Map<T, number>;
-```
 
 Counts the frequencies of elements in a collection and returns a Map with the elements as keys and their frequencies as values.
 
@@ -112,24 +84,16 @@ console.log(frequencyMap);
 
 > `fromStruct`
 
-```ts
-fromStruct(value: Record<string, any>): Map<string, any>;
-```
-
 Converts a struct-like object to a regular object where the keys are of type keyof T and the values are of type unknown.
 
 ```js
 const myStruct = { field1: "value1", field2: 42 };
 const myMap = fromStruct(myStruct);
-console.log(myMap); 
+console.log(myMap);
 // => { field1: 'value1', field2: 42 }
 ```
 
 > `keyDelete`
-
-```ts
-keyDelete<T>(value: Map<T, any>, key: T): Map<T, any>;
-```
 
 Deletes items from a list of objects based on a specific key value.
 
@@ -142,15 +106,11 @@ const data = [
 ];
 
 const filtered = keyDelete(data, "b");
-console.log(filtered); 
+console.log(filtered);
 // => [{ key: 'a', value: 1 }, { key: 'c', value: 3 }, { key: 'd', value: 4 }]
 ```
 
 > `keyFind`
-
-```ts
-keyFind<T>(value: Map<T, any>, key: T): any;
-```
 
 Finds the first item in a list of objects that matches a specific key value.
 
@@ -167,15 +127,11 @@ console.log(found);
 // => { key: 'c', value: 3 }
 
 const notFound = keyFind(data, "e");
-console.log(notFound); 
+console.log(notFound);
 // => undefined
 ```
 
 > `keyMember`
-
-```ts
-keyMember<T>(value: Map<T, any>, key: T): boolean;
-```
 
 Checks if any object in a list has a specific key-value pair.
 
@@ -186,18 +142,14 @@ const data = [
   { id: 3, name: "Alice" },
 ];
 
-console.log(keyMember(data, "id", 2)); 
+console.log(keyMember(data, "id", 2));
 // => true
 
-console.log(keyMember(data, "name", "Bob")); 
+console.log(keyMember(data, "name", "Bob"));
 // => false
 ```
 
 > `keySort`
-
-```ts
-keySort<T>(value: Map<T, any>, key: T): T[];
-```
 
 Sorts a list of objects based on a specific key.
 
@@ -209,15 +161,11 @@ const data = [
 ];
 
 const sortedData = keySort(data, "id");
-console.log(sortedData); 
+console.log(sortedData);
 // => [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }, { id: 3, name: 'Alice' }]
 ```
 
 > `keyStore`
-
-```ts
-keyStore<T>(value: Map<T, any>, key: T): Map<T, any>;
-```
 
 Transforms a list of items into an array of key-value tuples where the value is set to a default value for items with a specific key.
 
@@ -234,50 +182,38 @@ const people: Person[] = [
 ];
 
 const result = keyStore(people, "name", "Unknown", (person) => person.name);
-console.log(result); 
+console.log(result);
 // => [[ { id: 1, name: 'Alice' }, 'Unknown' ], [ { id: 2, name: 'Bob' }, 'Unknown' ], [ { id: 3, name: 'Charlie' }, 'Unknown' ]]
 ```
 
 > `popAt`
-
-```ts
-popAt<T>(value: T[], index: number): T[];
-```
 
 Removes an item at the specified index from a list.
 
 ```js
 const list = [1, 2, 3, 4, 5];
 const popped = popAt(list, 2);
-console.log(popped); 
+console.log(popped);
 // => [1, 2, 4, 5]
 ```
 
 > `updateAt`
-
-```ts
-updateAt<T>(value: T[], index: number, newValue: T): T[];
-```
 
 Updates an item at the specified index in a list with a new value.
 
 ```js
 const list = ["apple", "banana", "cherry"];
 const updated = updateAt(list, 1, "orange");
-console.log(updated); 
+console.log(updated);
 // => ['apple', 'orange', 'cherry']
 ```
 
 > `wrap`
 
-```ts
-wrap(value: any): any[];
-```
-
 Wraps a value in an array.
 
 ```js
 const wrapped = wrap("Hello");
-console.log(wrapped); 
+console.log(wrapped);
 // => ['Hello']
 ```

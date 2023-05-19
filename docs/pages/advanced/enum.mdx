@@ -4,10 +4,6 @@ Provides a set of algorithms to work with enumerables.
 
 > `chunkBy`
 
-```ts
-chunkBy<T>(value: string[], callback: () => any): string[][]
-```
-
 Splits enumerable on every element for which fun returns a new value.
 Returns a list of lists.
 
@@ -21,10 +17,6 @@ console.log(
 
 > `chunkEvery`
 
-```ts
-chunkEvery(value: string[], size: number): string[][]
-```
-
 Chunks an array into subarrays of a specified size.
 
 ```js
@@ -34,15 +26,6 @@ console.log(chunkEvery(list, 3));
 ```
 
 > `chunkWhile`
-
-```ts
-chunkWhile(
-  value: string[],
-  acc: any,
-  callback: (element: string, acc: any) => { kind: 'cont', chunk: string[], acc: any } | { kind: 'halt', acc: any },
-  accCallback: (acc: any) => { kind: 'cont', chunk: string[], acc: any } | { kind: 'halt', acc: any }
-): any
-```
 
 Chunks an enumerable into lists of elements while the given predicate returns true.
 Last sublist includes 10 as it breaks the sequence of odd numbers.
@@ -60,14 +43,6 @@ console.log(oddChunks);
 ```
 
 > `concat`, `concatLists`
-
-```ts
-concat(value1: string[], value2: string[]): string[]
-```
-
-```ts
-concatLists(values: string[][]): string[]
-```
 
 Given an enumerable of enumerables, concatenates the enumerables into a single list.
 
@@ -87,10 +62,6 @@ console.log(concatLists([1, [2], 3], [4, 5, 6]));
 
 > `countUntil`
 
-```ts
-countUntil(value: string[], callback: (element: string) => boolean): number
-```
-
 Counts the number of elements in the enumerable until the given predicate returns false.
 
 ```js
@@ -103,10 +74,6 @@ console.log(count);
 
 > `dedup`
 
-```ts
-dedup(value: string[]): string[]
-```
-
 Removes duplicate elements from an array and returns a new array with unique elements.
 
 ```js
@@ -118,10 +85,6 @@ console.log(deduplicatedList);
 
 > `deleteItem`
 
-```ts
-deleteItem(value: string[], item: string): string[]
-```
-
 Deletes all occurrences of an item from an array and returns a new array without the item.
 
 ```js
@@ -132,23 +95,15 @@ console.log(updatedNumbers); // Output: [1, 2, 4, 5]
 
 > `dropEvery`
 
-```ts
-dropEvery(value: string[], count: number): string[]
-```
-
 Drops every nth element from an array and returns a new array without those elements.
 
 ```js
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-console.log(dropEvery(list, 3)); 
+console.log(dropEvery(list, 3));
 // => [1, 2, 4, 5, 7, 8]
 ```
 
 > `dropWhile`
-
-```ts
-dropWhile(value: string[], callback: (element: string) => boolean): string[]
-```
 
 Drops elements from the beginning of an array until the condition is no longer satisfied and returns a new array without those elements.
 
@@ -156,44 +111,32 @@ Drops elements from the beginning of an array until the condition is no longer s
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const result = dropWhile(numbers, (num) => num <= 5);
-console.log(result); 
+console.log(result);
 // => [6, 7, 8, 9, 10]
 ```
 
 > `each`
-    
-```ts
-each(value: string[], callback: (element: string) => any): string[]
-```
 
 Iterates over an array and applies the given function to each element.
 
 ```js
 const numbers = [1, 2, 3, 4];
-each(numbers, (num) => console.log(num)); 
+each(numbers, (num) => console.log(num));
 // => 1 2 3 4
 ```
 
 > `findIndex`
-
-```ts
-findIndex(value: string[], callback: (element: string) => boolean): number | null
-```
 
 Finds the index of the first element in a collection that satisfies the provided predicate function.
 
 ```js
 const numbers = [10, 20, 30, 40];
 const index = findIndex(numbers, (num) => num > 25);
-console.log(index); 
+console.log(index);
 // => 2
 ```
 
 > `findValue`
-
-```ts
-findValue(value: string[], callback: (element: string) => boolean): string | null
-```
 
 Finds the first value in a map that satisfies the provided predicate function.
 
@@ -205,23 +148,11 @@ const fruitMap = new Map([
 ]);
 
 const value = findValue(fruitMap, (color) => color === "yellow");
-console.log(value); 
+console.log(value);
 // => yellow
 ```
 
 > `flatMapReduce`
-
-```ts
-type FlatMapReduceCallback<T> = () => T;
-type FlatMapReduceAccCallback<T> = (element1: T, element2: T) => T;
-
-flatMapReduce<T>(
-  value: T[],
-  mapCallback: FlatMapReduceCallback<T>,
-  reduceCallback1: FlatMapReduceAccCallback<T>,
-  reduceCallback2: FlatMapReduceAccCallback<T>
-): any
-```
 
 Applies a mapper function to each element in an array, flattens the resulting arrays, and reduces them into a single value using a reducer function.
 
@@ -229,17 +160,11 @@ Applies a mapper function to each element in an array, flattens the resulting ar
 const list = [1, 2, 3];
 const mapper = (value: number) => [value, value * 2];
 const reducer = (acc: number[], value: number[]) => acc.concat(value);
-console.log(flatMapReduce(list, mapper, reducer)); 
+console.log(flatMapReduce(list, mapper, reducer));
 // => [1, 2, 2, 4, 3, 6]
 ```
 
 > `groupBy`
-  
-```ts
-type GroupByCallback<T> = () => any;
-
-groupBy<T>(value: T[], callback: GroupByCallback<T>): Map<T, Set<T>>
-```
 
 Groups elements of an array into an object based on a key returned by a key function.
 
@@ -248,95 +173,65 @@ const list = [1, 2, 3, 4, 5];
 const result = groupBy(list, (x) => (x % 2 === 0 ? "even" : "odd"));
 console.log(result);
 // => { odd: [ 1, 3, 5 ], even: [ 2, 4 ] }
-``` 
+```
 
 > `into`
-
-```ts
-into<T>(value1: T[], value2: T[]): T[] 
-```
 
 Adds an element to the end of an array and returns the new array.
 
 ```js
-console.log(intoCollection([1, 2, 3, 4], 5, 1)); 
+console.log(intoCollection([1, 2, 3, 4], 5, 1));
 // => [1, 5, 2, 3, 4]
 
-console.log(into([1, 2, 3, 4], 5)); 
+console.log(into([1, 2, 3, 4], 5));
 // => [1, 2, 3, 4, 5]
 ```
 
 > `introsperse`
-
-```ts
-introsperse<T>(value: T[], element: T): T[]
-```
 
 Inserts a separator element between each element of an array and returns the new array.
 
 ```js
 const list = [1, 2, 3];
 const result = introsperse(list, 0);
-console.log(result); 
+console.log(result);
 // => [1, 0, 2, 0, 3]
 
 const words = ["apple", "banana", "orange"];
 const result2 = introsperse(words, "-");
-console.log(result2); 
+console.log(result2);
 // => ["apple", "-", "banana", "-", "orange"]
 ```
 
 > `mapEvery`
-
-```ts
-type MapEveryCallback<T> = () => any;
-
-mapEvery<T>(value: T[], callback: MapEveryCallback<T>): T[] 
-```
 
 Maps every nth element of an array using a callback function and returns the new array.
 
 ```js
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const result = mapEvery(list, 3, (x) => x * 2);
-console.log(result); 
+console.log(result);
 // => [1, 2, 6, 4, 5, 12, 7, 8, 18]
 ```
 
 > `mapFetch`
 
-```ts
-mapFetch<T>(value: T[], callback: MapEveryCallback<T>): T[]
-```
-
 Retrieves the value associated with the specified key from a map.
 
 ```js
 const fruitMap = new Map([
-    ['apple', 'red'],
-    ['banana', 'yellow'],
-    ['orange', 'orange'],
-  ]);
+  ["apple", "red"],
+  ["banana", "yellow"],
+  ["orange", "orange"],
+]);
 
-console.log(mapFetch(fruitMap, 'apple')); 
+console.log(mapFetch(fruitMap, "apple"));
 // => red
-console.log(mapFetch(fruitMap, 'grape')); 
+console.log(mapFetch(fruitMap, "grape"));
 // => undefined
 ```
 
 > `mapReduce`
-
-```ts
-
-type MapReduceCallback<T> = () => any;
-type MapReduceAccCallback<T> = (element1: T, element2: T) => T;
-
-mapReduce<T>(
-  value: T[],
-  mapCallback: MapReduceCallback<T>,
-  reduceCallback: MapReduceAccCallback<T>
-): any 
-```
 
 Maps each element of an array using a mapper function and reduces the mapped values into a single result using a reducer function.
 
@@ -348,15 +243,11 @@ const result = mapReduce(
   (acc, squared) => acc + squared,
   0
 );
-console.log(result); 
+console.log(result);
 // => 55
-``` 
+```
 
 > `maxBy`
-
-```ts
-maxBy<T>(value: T[], callback: MapEveryCallback<T>): any
-```
 
 Finds the maximum value in an array based on a selector function.
 
@@ -373,15 +264,11 @@ const people: Person[] = [
 ];
 
 const oldestPerson = maxBy(people, (person) => person.age);
-console.log(oldestPerson); 
+console.log(oldestPerson);
 // => { name: 'Bob', age: 30 }
-``` 
+```
 
 > `minMaxBy`
-
-```ts
-minMaxBy<T>(value: T[], callback: MapEveryCallback<T>): [any, any]
-```
 
 Finds the minimum and maximum values in an array based on a selector function and a custom comparer function.
 
@@ -392,94 +279,66 @@ const [min, max] = minMaxBy(
   (num) => num,
   (a, b) => a - b
 );
-console.log(`Min: ${min}, Max: ${max}`); 
+console.log(`Min: ${min}, Max: ${max}`);
 // => Min: 1, Max: 8
 ```
 
 > `reverseSlice`
-
-```ts
-reverseSlice<T>(value: T[], start: number, end: number): T[]
-```
 
 Creates a new array by reversing a section of an existing array.
 
 ```js
 const array = [1, 2, 3, 4, 5];
 const result = reverseSlice(array, 1, 3);
-console.log(result); 
+console.log(result);
 // => [4, 3, 2]
 ```
 
 > `scan`
-
-```ts
-type ScanCallback<T> = (element1: T, element2: T) => T;
-
-scan<T>(value: T[], callback: ScanCallback<T>): T[]
-```
 
 Applies a function to each element of an array, accumulating the results into a new array.
 
 ```js
 const list = [1, 2, 3, 4, 5];
 const result = scan(list, (acc, x) => acc + x, 0);
-console.log(result); 
+console.log(result);
 // => [0, 1, 3, 6, 10, 15]
 ```
 
 > `takeEvery`
-
-```ts
-takeEvery<T>(value: T[], nth: number): T[]
-```
 
 Takes every nth element from an array and returns a new array.
 
 ```js
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const result = takeEvery(list, 2);
-console.log(result); 
+console.log(result);
 // => [1, 3, 5, 7, 9]
 ```
 
 > `takeRandom`
-
-```ts
-takeRandom<T>(value: T[], count: number): T[]
-```
 
 Takes a random sample of elements from an array and returns a new array.
 
 ```js
 const numbers = [1, 2, 3, 4, 5];
 const randomNumbers = takeRandom(3, numbers);
-console.log(randomNumbers); 
+console.log(randomNumbers);
 // => [?, ?, ?]
 ```
 
 > `uniq`
-
-```ts
-uniq<T>(value: T[]): T[] 
-```
 
 Removes duplicate elements from an array and returns a new array with unique elements.
 
 ```js
 const numbers = [1, 2, 2, 3, 4, 4, 5];
 const uniqueNumbers = uniq(numbers);
-console.log(uniqueNumbers); 
+console.log(uniqueNumbers);
 // => [1, 2, 3, 4, 5]
 ```
 
 > `uniqBy`
-
-```ts
-type UniqByCallback<T> = () => any;
-
-uniqBy<T>(value: T[], callback: UniqByCallback<T>): T[] 
-```
 
 Removes duplicate elements from an array based on a key function and returns a new array with unique elements.
 
@@ -494,7 +353,7 @@ const people: Person[] = [
   { name: "Bob", age: 30 },
   { name: "Alice", age: 35 },
   { name: "Charlie", age: 30 },
-  ];
+];
 
 const uniquePeople = uniqueBy(people, (person) => person.name);
 console.log(uniquePeople);
@@ -507,52 +366,35 @@ console.log(uniquePeople);
 
 > `unzip`
 
-```ts
-unzip<T>(value: [T, T][]): [T[], T[]]
-```
-
 Unzips an array of tuples into separate arrays for each element position.
 
 ```js
-
 const tuples: (string | number)[][] = [
   ["a", 1],
   ["b", 2],
   ["c", 3],
 ];
 const [letters, numbers] = unzip(tuples);
-console.log(letters); 
+console.log(letters);
 // => ['a', 'b', 'c']
 
-console.log(numbers); 
+console.log(numbers);
 // => [1, 2, 3]
 ```
 
 > `withIndex`
-
-```ts
-type WithIndexCallback<T> = (element: T, index: number) => any;
-
-function withIndex<T>(value: T[], callback: WithIndexCallback<T>): T[] 
-```
 
 Applies a function to each element of an array along with its index.
 
 ```ts
 const array = ["apple", "banana", "cherry"];
 withIndex(array, (item, index) => {
-  console.log(`Item: ${item}, Index: ${index}`); 
+  console.log(`Item: ${item}, Index: ${index}`);
 });
 // => Item: apple, Index: 0 Item: banana, Index: 1 Item: cherry, Index: 2
 ```
 
 > `zipReduce`
-
-```ts
-type ZipReduceCallback<T> = (element1: T, element2: T) => T;
-
-function zipReduce<T>(value1: T[], value2: T[], callback: ZipReduceCallback<T>): T[] 
-```
 
 Reduces two arrays into a single value by applying a function to each pair of corresponding elements.
 
@@ -561,15 +403,11 @@ const arr1 = [1, 2, 3];
 const arr2 = [4, 5, 6];
 
 const result = zipReduce(arr1, arr2, 0, (acc, a, b) => acc + a * b);
-console.log(result); 
+console.log(result);
 // =>  32
 ```
 
 > `zipWith`
-
-```ts
-zipWith<T>(value1: T[], value2: T[], callback: ZipReduceCallback<T>): T[
-```
 
 Applies a function to each pair of corresponding elements from two arrays and returns a new array of the results.
 
@@ -578,6 +416,6 @@ const arr1 = [1, 2, 3];
 const arr2 = [4, 5, 6];
 
 const result = zipWith(arr1, arr2, (a, b) => a + b);
-console.log(result); 
+console.log(result);
 // => [5, 7, 9]
 ```

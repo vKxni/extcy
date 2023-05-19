@@ -1,16 +1,8 @@
-# Map 
+# Map
 
-*Maps are the "go to" key-value data structure in Elixir.*
-
-Maps can be created with the %{} syntax, and key-value pairs can be expressed as key => value:
+_Maps are the "go to" key-value data structure in Elixir._
 
 > `getAndUpdate`
-
-```elixir 
-type GetAndUpdateCallback<T> = () => { kind: 'get', value: T } | 'pop';
-
-getAndUpdate<T>(value: Map<any, T>, key: any, callback: GetAndUpdateCallback<T>): { kind: 'get', value: T } | { kind: 'pop' };
-```
 
 Retrieves the value associated with the specified key from a map, applies an update function to it, and sets the updated value back into the map.
 If the key does not exist, a new entry is created with the updated value.
@@ -18,20 +10,14 @@ If the key does not exist, a new entry is created with the updated value.
 ```js
 const myMap = new Map<string, number>();
 const updatedValue = getAndUpdate(myMap, "key1", (oldValue) => (oldValue ?? 0) + 1);
-console.log(updatedValue); 
+console.log(updatedValue);
 // => 1
 
-console.log(myMap); 
+console.log(myMap);
 // => Map { 'key1' => 1 }
 ```
 
 > `getLazy`
-
-```elixir
-type GetLazyCallback<T> = () => T;
-
-getLazy<T>(value: Map<any, T>, key: any, callback: GetLazyCallback<T>): T;
-```
 
 Retrieves the value associated with the specified key from a map. If the key does not exist, a default value is created and set into the map.
 
@@ -41,15 +27,11 @@ const value = getLazy(myMap, "key1", () => {
   console.log("Computing default value...");
   return 42;
 });
-console.log(value); 
+console.log(value);
 // => 42
-``` 
+```
 
 > `mapEqual`
-
-```elixir
-mapEqual<T>(value1: Map<any, T>, value2: Map<any, T>): boolean;
-```
 
 Checks if two maps are equal by comparing their sizes and values.
 
@@ -69,20 +51,14 @@ const map3 = new Map([
   ["b", 3],
 ]);
 
-console.log(mapEqual(map1, map2)); 
+console.log(mapEqual(map1, map2));
 // => true
 
-console.log(mapEqual(map1, map3)); 
+console.log(mapEqual(map1, map3));
 // => false
 ```
 
 > `mapPutNewLazy`
-
-```elixir
-type MapPutNewLazyCallback<T> = () => T;
-
-function mapPutNewLazy<T>(value: Map<any, T>, key: any, callback: MapPutNewLazyCallback<T>): Map<any, T>;
-```
 
 Adds a key-value pair to a map if the key does not already exist.
 
@@ -95,15 +71,11 @@ const map = new Map([
 mapPutNewLazy(map, "c", () => 3);
 mapPutNewLazy(map, "b", () => 4); // 'b' already exists, so the valueProvider is not called
 
-console.log(map); 
+console.log(map);
 // => Map(3) { 'a' => 1, 'b' => 2, 'c' => 3 }
 ```
 
 > `mapValues`
-
-```elixir
-function mapValues<T>(value: Map<any, T>): T[];
-```
 
 Retrieves an array of values from a map.
 
@@ -115,17 +87,11 @@ const map = new Map([
 
 const values = mapValues(map);
 
-console.log(values); 
+console.log(values);
 // => [1, 2]
 ```
 
 > `popLazy`
-
-```elixir
-type PopLazyCallback<T> = () => T;
-
-function popLazy<T>(value: Map<any, T>, key: any, callback: PopLazyCallback<T>): T;
-```
 
 Retrieves the value associated with the specified key from a map and removes the entry from the map.
 If the key does not exist, a default value is provided.
@@ -137,21 +103,15 @@ const map = new Map<string, number>([
 ]);
 
 const value = popLazy(map, "a", () => 0);
-console.log(value); 
+console.log(value);
 // => 1
 
 const nonExistentValue = popLazy(map, "c", () => 0);
-console.log(nonExistentValue); 
+console.log(nonExistentValue);
 // => 0
-``` 
+```
 
 > `reject`
-
-```elixir
-type RejectCallback<T> = (key: any, value: T) => boolean;
-
-function reject<T>(value: Map<any, T>, callback: RejectCallback<T>): Map<any, T>;
-```
 
 Filters an array based on a predicate function and returns a new array containing the rejected items.
 
@@ -159,23 +119,17 @@ Filters an array based on a predicate function and returns a new array containin
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const oddNumbers = reject(numbers, (num) => num % 2 === 0);
-console.log(oddNumbers); 
+console.log(oddNumbers);
 // => [1, 3, 5, 7, 9]
 ```
 
 > `update`
-
-```elixir
-type UpdateCallback<T> = () => T;
-
-function update<T>(value: Map<any, T>, key: any, callback: UpdateCallback<T>): Map<any, T>;
-```
 
 Updates the value associated with the specified key in a map by applying a transformation function to it.
 
 ```js
 const emptyMap = {};
 const updatedMap = update(emptyMap, "key", () => "value");
-console.log(updatedMap); 
+console.log(updatedMap);
 // => { key: 'value' }
 ```
