@@ -6,7 +6,7 @@
  * @returns {T[]} - The updated array without dropped elements.
  */
 export function dropEvery<T>(list: T[], n: number): T[] {
-  return list.filter((_, index) => (index + 1) % n !== 0);
+	return list.filter((_, index) => (index + 1) % n !== 0);
 }
 
 // const list = [1, 2, 3, 4, 5, 6, 7, 8, 9];

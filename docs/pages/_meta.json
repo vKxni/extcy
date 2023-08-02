@@ -1,16 +1,16 @@
 {
-  "index": "Introduction",
-  "operations": "Operations",
-  "miscellaneous": "Miscellaneous",
-  "advanced": "Functions",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://twitter.com/vKxni",
-    "newWindow": true
-  }
+    "index": "Introduction",
+    "operations": "Operations",
+    "miscellaneous": "Miscellaneous",
+    "advanced": "Functions",
+    "about": {
+        "title": "About",
+        "type": "page"
+    },
+    "contact": {
+        "title": "Contact",
+        "type": "page",
+        "href": "https://twitter.com/vKxni",
+        "newWindow": true
+    }
 }

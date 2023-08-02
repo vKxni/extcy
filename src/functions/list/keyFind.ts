@@ -6,17 +6,17 @@
  * @returns {{ key: string; value: T } | undefined} - The matching object or undefined if no match is found.
  */
 export function keyFind<T>(
-  list: { key: string; value: T }[],
-  key: string
+	list: { key: string; value: T }[],
+	key: string,
 ): { key: string; value: T } | undefined {
-  return list.find((item) => item.key === key);
+	return list.find((item) => item.key === key);
 }
 
 // const data = [
-//   { key: "a", value: 1 },
-//   { key: "b", value: 2 },
-//   { key: "c", value: 3 },
-//   { key: "d", value: 4 },
+//     { key: "a", value: 1 },
+//     { key: "b", value: 2 },
+//     { key: "c", value: 3 },
+//     { key: "d", value: 4 },
 // ];
 
 // const found = keyFind(data, "c");

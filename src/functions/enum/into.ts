@@ -6,7 +6,7 @@
  * @returns {T[]} - The updated array with the element added.
  */
 export function into<T>(collection: T[], element: T): T[] {
-  return [...collection, element];
+	return [...collection, element];
 }
 
 /**
@@ -18,11 +18,11 @@ export function into<T>(collection: T[], element: T): T[] {
  * @returns {T[]} - The updated array with the element inserted.
  */
 export function intoCollection<T>(
-  collection: T[],
-  element: T,
-  index: number
+	collection: T[],
+	element: T,
+	index: number,
 ): T[] {
-  return [...collection.slice(0, index), element, ...collection.slice(index)];
+	return [...collection.slice(0, index), element, ...collection.slice(index)];
 }
 
 // console.log(into([1, 2, 3, 4], 5)); // Output: [1, 2, 3, 4, 5]

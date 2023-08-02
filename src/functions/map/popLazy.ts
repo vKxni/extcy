@@ -8,21 +8,22 @@
  * @returns {V} - The value associated with the key or the default value.
  */
 export function popLazy<K, V>(
-  map: Map<K, V>,
-  key: K,
-  defaultValue: () => V
+	map: Map<K, V>, key: K,
+	defaultValue: () => V,
 ): V {
-  if (map.has(key)) {
-    const value = map.get(key)!;
-    map.delete(key);
-    return value;
-  }
-  return defaultValue();
+	if (map.has(key)) {
+		const value = map.get(key)!;
+		map.delete(key);
+
+		return value;
+	}
+
+	return defaultValue();
 }
 
 // const map = new Map<string, number>([
-//   ["a", 1],
-//   ["b", 2],
+//     ["a", 1],
+//     ["b", 2],
 // ]);
 
 // const value = popLazy(map, "a", () => 0);

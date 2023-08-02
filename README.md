@@ -5,7 +5,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://github.com/alelievr/Mixture/blob/master/LICENSE)
 
 <p align="center">
-<img src="exts.png"  alt="Extcy" width="250" height="250"/></a>
+<img src="exts.png"    alt="Extcy" width="250" height="250"/></a>
 <p>
 
 <p align="center">
@@ -22,6 +22,7 @@ Elixir has one of the most powerful standard libraries of any language. It's als
 
 ```bash
 npm install extcy
+yarn add extcy
 ```
 
 ## Examples
@@ -54,9 +55,9 @@ console.log(frequencyMap); // { 1 => 1, 2 => 2, 3 => 3, 4 => 4 }
 
 ```ts
 const data = [
-  { id: 3, name: "Alice" },
-  { id: 1, name: "John" },
-  { id: 2, name: "Jane" },
+    { id: 3, name: "Alice" },
+    { id: 1, name: "John" },
+    { id: 2, name: "Jane" },
 ];
 
 const sortedData = keySort(data, "id");
@@ -67,10 +68,10 @@ console.log(sortedData); // [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }, {
 
 ```ts
 const result = when(
-  11,
-  [(n) => n === 0, () => "zero"],
-  [(n) => n % 2 === 0, () => "even"],
-  [(n) => n % 2 !== 0, () => "odd"]
+    11,
+    [(n) => n === 0, () => "zero"],
+    [(n) => n % 2 === 0, () => "even"],
+    [(n) => n % 2 !== 0, () => "odd"]
 );
 
 console.log(result); // odd

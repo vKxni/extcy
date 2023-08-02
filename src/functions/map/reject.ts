@@ -5,17 +5,20 @@
  * @param {(item: T) => boolean} predicate - The predicate function.
  * @returns {T[]} - The array of rejected items.
  */
-export function reject<T>(array: T[], predicate: (item: T) => boolean): T[] {
-  let rejectedItems: T[] = [];
+export function reject<T>(
+	array: T[],
+	predicate: (item: T) => boolean,
+): T[] {
+	const rejectedItems: T[] = [];
 
-  for (let i = 0; i < array.length; i++) {
-    const item = array[i];
-    if (!predicate(item)) {
-      rejectedItems.push(item);
-    }
-  }
+	for (let i = 0; i < array.length; i++) {
+		const item = array[i];
+		if (!predicate(item)) {
+			rejectedItems.push(item);
+		}
+	}
 
-  return rejectedItems;
+	return rejectedItems;
 }
 
 // const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

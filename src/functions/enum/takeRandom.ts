@@ -6,19 +6,18 @@
  * @returns {T[]} - The new array with a random sample of elements.
  */
 export function takeRandom<T>(n: number, list: T[]): T[] {
-  const shuffled = list.slice();
-  let i = list.length;
-  let temp;
-  let index;
+	const shuffled = list.slice();
+	let i = list.length, index, temp;
 
-  while (i--) {
-    index = Math.floor((i + 1) * Math.random());
-    temp = shuffled[index];
-    shuffled[index] = shuffled[i];
-    shuffled[i] = temp;
-  }
+	while (i--) {
+		index = Math.floor((i + 1) * Math.random());
+		temp = shuffled[index];
 
-  return shuffled.slice(0, n);
+		shuffled[index] = shuffled[i];
+		shuffled[i] = temp;
+	}
+
+	return shuffled.slice(0, n);
 }
 
 // const numbers = [1, 2, 3, 4, 5];

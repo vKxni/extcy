@@ -24,8 +24,8 @@ Retrieves the value associated with the specified key from a map. If the key doe
 ```js
 const myMap = new Map<string, number>();
 const value = getLazy(myMap, "key1", () => {
-  console.log("Computing default value...");
-  return 42;
+    console.log("Computing default value...");
+    return 42;
 });
 console.log(value);
 // => 42
@@ -37,18 +37,18 @@ Checks if two maps are equal by comparing their sizes and values.
 
 ```js
 const map1 = new Map([
-  ["a", 1],
-  ["b", 2],
+    ["a", 1],
+    ["b", 2],
 ]);
 
 const map2 = new Map([
-  ["a", 1],
-  ["b", 2],
+    ["a", 1],
+    ["b", 2],
 ]);
 
 const map3 = new Map([
-  ["a", 1],
-  ["b", 3],
+    ["a", 1],
+    ["b", 3],
 ]);
 
 console.log(mapEqual(map1, map2));
@@ -64,8 +64,8 @@ Adds a key-value pair to a map if the key does not already exist.
 
 ```js
 const map = new Map([
-  ["a", 1],
-  ["b", 2],
+    ["a", 1],
+    ["b", 2],
 ]);
 
 mapPutNewLazy(map, "c", () => 3);
@@ -81,8 +81,8 @@ Retrieves an array of values from a map.
 
 ```js
 const map = new Map([
-  ["a", 1],
-  ["b", 2],
+    ["a", 1],
+    ["b", 2],
 ]);
 
 const values = mapValues(map);
@@ -98,8 +98,8 @@ If the key does not exist, a default value is provided.
 
 ```js
 const map = new Map<string, number>([
-  ["a", 1],
-  ["b", 2],
+    ["a", 1],
+    ["b", 2],
 ]);
 
 const value = popLazy(map, "a", () => 0);

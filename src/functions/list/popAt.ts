@@ -7,13 +7,11 @@
  * @throws {Error} - If the index is out of bounds.
  */
 export function popAt<T>(list: T[], index: number): T[] {
-  if (index < 0 || index >= list.length) {
-    throw new Error("Index out of bounds");
-  }
+	if (index < 0 || index >= list.length) {
+		throw new Error('Index out of bounds');
+	}
 
-  const result = [...list];
-  result.splice(index, 1);
-  return result;
+	return list.filter((_, i) => i !== index);
 }
 
 // const list = [1, 2, 3, 4, 5];

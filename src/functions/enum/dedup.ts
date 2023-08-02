@@ -5,7 +5,7 @@
  * @returns {T[]} - The deduplicated array.
  */
 export function dedup<T>(list: T[]): T[] {
-  return [...new Set(list)];
+	return [...new Set(list)];
 }
 
 // const inputList = [1, 2, 3, 2, 4, 1, 5];

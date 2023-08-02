@@ -7,11 +7,11 @@
  * @returns {U[]} - The result of the mapping, flattening, and reduction.
  */
 export function flatMapReduce<T, U>(
-  list: T[],
-  mapper: (value: T) => U[],
-  reducer: (acc: U[], value: U[]) => U[]
+	list: T[],
+	mapper: (value: T) => U[],
+	reducer: (acc: U[], value: U[]) => U[],
 ): U[] {
-  return reducer([], list.flatMap(mapper));
+	return reducer([], list.flatMap(mapper));
 }
 
 // const list = [1, 2, 3];

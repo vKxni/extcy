@@ -8,14 +8,15 @@
  * @returns {V} - The updated value.
  */
 export function getAndUpdate<K, V>(
-  map: Map<K, V>,
-  key: K,
-  updateFn: (value: V | undefined) => V
+	map: Map<K, V>, key: K,
+	updateFn: (value: V | undefined) => V,
 ): V {
-  const oldValue = map.get(key);
-  const newValue = updateFn(oldValue);
-  map.set(key, newValue);
-  return newValue;
+	const oldValue = map.get(key);
+	const newValue = updateFn(oldValue);
+
+	map.set(key, newValue);
+
+	return newValue;
 }
 
 // const myMap = new Map<string, number>();

@@ -7,19 +7,18 @@
  * @returns {U} - The accumulated result.
  */
 export function foldl<T, U>(
-  list: T[],
-  accumulator: U,
-  fn: (acc: U, current: T) => U
+	list: T[], accumulator: U,
+	fn: (acc: U, current: T) => U,
 ): U {
-  let result = accumulator;
-  const length = list.length;
+	let result = accumulator;
+	const length = list.length;
 
-  for (let i = 0; i < length; i++) {
-    const item = list[i];
-    result = fn(result, item);
-  }
+	for (let i = 0; i < length; i++) {
+		const item = list[i];
+		result = fn(result, item);
+	}
 
-  return result;
+	return result;
 }
 
 // const numbers = [1, 2, 3, 4, 5];

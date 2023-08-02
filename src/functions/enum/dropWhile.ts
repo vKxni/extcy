@@ -6,17 +6,17 @@
  * @returns {T[]} - The updated array without dropped elements.
  */
 export function dropWhile<T>(list: T[], condition: (item: T) => boolean): T[] {
-  let dropIndex = 0;
-  const length = list.length;
+	let dropIndex = 0;
+	const length = list.length;
 
-  for (let i = 0; i < length; i++) {
-    if (!condition(list[i])) {
-      dropIndex = i;
-      break;
-    }
-  }
+	for (let i = 0; i < length; i++) {
+		if (!condition(list[i])) {
+			dropIndex = i;
+			break;
+		}
+	}
 
-  return list.slice(dropIndex);
+	return list.slice(dropIndex);
 }
 
 // const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

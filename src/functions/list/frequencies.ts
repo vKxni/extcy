@@ -5,14 +5,14 @@
  * @returns {Map<T, number>} - The Map containing element frequencies.
  */
 export function frequencies<T>(collection: T[]): Map<T, number> {
-  const freqMap = new Map<T, number>();
+	const freqMap = new Map<T, number>();
 
-  for (let i = 0; i < collection.length; i++) {
-    const item = collection[i];
-    freqMap.set(item, (freqMap.get(item) ?? 0) + 1);
-  }
+	for (let i = 0; i < collection.length; i++) {
+		const item = collection[i];
+		freqMap.set(item, (freqMap.get(item) ?? 0) + 1);
+	}
 
-  return freqMap;
+	return freqMap;
 }
 
 // const numbers = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4];

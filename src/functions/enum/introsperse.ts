@@ -6,13 +6,12 @@
  * @returns {T[]} - The updated array with the separator inserted.
  */
 export function introsperse<T>(list: T[], separator: T): T[] {
-  return list.reduce((acc, cur, index) => {
-    if (index !== 0) {
-      acc.push(separator);
-    }
-    acc.push(cur);
-    return acc;
-  }, [] as T[]);
+	return list.reduce((acc, cur, index) => {
+		if (index !== 0) acc.push(separator);
+		acc.push(cur);
+
+		return acc;
+	}, [] as T[]);
 }
 
 // const list = [1, 2, 3];

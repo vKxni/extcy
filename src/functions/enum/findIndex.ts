@@ -6,15 +6,16 @@
  * @returns {number | undefined} - The index of the found element, or undefined if no element is found.
  */
 export function findIndex<T>(
-  collection: T[],
-  predicate: (item: T) => boolean
+	collection: T[],
+	predicate: (item: T) => boolean,
 ): number | undefined {
-  for (let i = 0; i < collection.length; i++) {
-    if (predicate(collection[i])) {
-      return i;
-    }
-  }
-  return undefined;
+	for (let i = 0; i < collection.length; i++) {
+		if (predicate(collection[i])) {
+			return i;
+		}
+	}
+
+	return undefined;
 }
 
 // const numbers = [10, 20, 30, 40];

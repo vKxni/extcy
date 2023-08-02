@@ -30,9 +30,9 @@ Flattens a list of arrays into a single-level array.
 
 ```js
 const nestedList = [
-  [1, 2, 3],
-  [4, 5],
-  [6, 7, 8, 9],
+    [1, 2, 3],
+    [4, 5],
+    [6, 7, 8, 9],
 ];
 const flattenedList = flattenList(nestedList);
 console.log(flattenedList);
@@ -99,10 +99,10 @@ Deletes items from a list of objects based on a specific key value.
 
 ```js
 const data = [
-  { key: "a", value: 1 },
-  { key: "b", value: 2 },
-  { key: "c", value: 3 },
-  { key: "d", value: 4 },
+    { key: "a", value: 1 },
+    { key: "b", value: 2 },
+    { key: "c", value: 3 },
+    { key: "d", value: 4 },
 ];
 
 const filtered = keyDelete(data, "b");
@@ -116,10 +116,10 @@ Finds the first item in a list of objects that matches a specific key value.
 
 ```js
 const data = [
-  { key: "a", value: 1 },
-  { key: "b", value: 2 },
-  { key: "c", value: 3 },
-  { key: "d", value: 4 },
+    { key: "a", value: 1 },
+    { key: "b", value: 2 },
+    { key: "c", value: 3 },
+    { key: "d", value: 4 },
 ];
 
 const found = keyFind(data, "c");
@@ -133,13 +133,13 @@ console.log(notFound);
 
 > `keyMember`
 
-Checks if any object in a list has a specific key-value pair.
+Checks if unknown object in a list has a specific key-value pair.
 
 ```js
 const data = [
-  { id: 1, name: "John" },
-  { id: 2, name: "Jane" },
-  { id: 3, name: "Alice" },
+    { id: 1, name: "John" },
+    { id: 2, name: "Jane" },
+    { id: 3, name: "Alice" },
 ];
 
 console.log(keyMember(data, "id", 2));
@@ -155,9 +155,9 @@ Sorts a list of objects based on a specific key.
 
 ```js
 const data = [
-  { id: 3, name: "Alice" },
-  { id: 1, name: "John" },
-  { id: 2, name: "Jane" },
+    { id: 3, name: "Alice" },
+    { id: 1, name: "John" },
+    { id: 2, name: "Jane" },
 ];
 
 const sortedData = keySort(data, "id");
@@ -171,14 +171,14 @@ Transforms a list of items into an array of key-value tuples where the value is 
 
 ```js
 interface Person {
-  id: number;
-  name: string;
+    id: number;
+    name: string;
 }
 
 const people: Person[] = [
-  { id: 1, name: "Alice" },
-  { id: 2, name: "Bob" },
-  { id: 3, name: "Charlie" },
+    { id: 1, name: "Alice" },
+    { id: 2, name: "Bob" },
+    { id: 3, name: "Charlie" },
 ];
 
 const result = keyStore(people, "name", "Unknown", (person) => person.name);

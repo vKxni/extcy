@@ -5,7 +5,7 @@
  * @returns {T[]} - The duplicated list.
  */
 export function duplicateItems<T>(list: T[]): T[] {
-  return list.concat(list);
+	return list.concat(list);
 }
 
 // const fruits = ["apple", "banana", "orange"];

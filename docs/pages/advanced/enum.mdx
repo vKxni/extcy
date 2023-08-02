@@ -10,7 +10,7 @@ Returns a list of lists.
 ```js
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 console.log(
-  chunkBy(list, (prev, current) => current - (prev || current) === 1)
+    chunkBy(list, (prev, current) => current - (prev || current) === 1)
 );
 // => [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
@@ -48,11 +48,11 @@ Given an enumerable of enumerables, concatenates the enumerables into a single l
 
 ```js
 console.log(
-  concat([
-    [1, 2],
-    [3, 4],
-    [5, 6],
-  ])
+    concat([
+        [1, 2],
+        [3, 4],
+        [5, 6],
+    ])
 );
 // => [1, 2, 3, 4, 5, 6]
 
@@ -142,9 +142,9 @@ Finds the first value in a map that satisfies the provided predicate function.
 
 ```js
 const fruitMap = new Map([
-  ["apple", "red"],
-  ["banana", "yellow"],
-  ["orange", "orange"],
+    ["apple", "red"],
+    ["banana", "yellow"],
+    ["orange", "orange"],
 ]);
 
 const value = findValue(fruitMap, (color) => color === "yellow");
@@ -203,6 +203,30 @@ console.log(result2);
 // => ["apple", "-", "banana", "-", "orange"]
 ```
 
+> `keysDelete`
+
+Deletes keys from an nested object.
+
+```js
+const obj = {
+    a: 1,
+    b: {
+        c: 2,
+        d: {
+            e: 3,
+            f: 4,
+        },
+    },
+    g: {
+        h: 5,
+    },
+};
+
+const result = keysDelete(obj, ["a", "b.d.f", "g"]);
+console.log(result);
+// => { b: { c: 2, d: { e: 3 } } }
+```
+
 > `mapEvery`
 
 Maps every nth element of an array using a callback function and returns the new array.
@@ -220,9 +244,9 @@ Retrieves the value associated with the specified key from a map.
 
 ```js
 const fruitMap = new Map([
-  ["apple", "red"],
-  ["banana", "yellow"],
-  ["orange", "orange"],
+    ["apple", "red"],
+    ["banana", "yellow"],
+    ["orange", "orange"],
 ]);
 
 console.log(mapFetch(fruitMap, "apple"));
@@ -238,10 +262,10 @@ Maps each element of an array using a mapper function and reduces the mapped val
 ```js
 const array = [1, 2, 3, 4, 5];
 const result = mapReduce(
-  array,
-  (num) => num * num,
-  (acc, squared) => acc + squared,
-  0
+    array,
+    (num) => num * num,
+    (acc, squared) => acc + squared,
+    0
 );
 console.log(result);
 // => 55
@@ -253,14 +277,14 @@ Finds the maximum value in an array based on a selector function.
 
 ```js
 interface Person {
-  name: string;
-  age: number;
+    name: string;
+    age: number;
 }
 
 const people: Person[] = [
-  { name: "Alice", age: 25 },
-  { name: "Bob", age: 30 },
-  { name: "Charlie", age: 28 },
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 30 },
+    { name: "Charlie", age: 28 },
 ];
 
 const oldestPerson = maxBy(people, (person) => person.age);
@@ -275,9 +299,9 @@ Finds the minimum and maximum values in an array based on a selector function an
 ```js
 const array = [5, 2, 8, 1, 4];
 const [min, max] = minMaxBy(
-  array,
-  (num) => num,
-  (a, b) => a - b
+    array,
+    (num) => num,
+    (a, b) => a - b
 );
 console.log(`Min: ${min}, Max: ${max}`);
 // => Min: 1, Max: 8
@@ -344,23 +368,23 @@ Removes duplicate elements from an array based on a key function and returns a n
 
 ```js
 interface Person {
-  name: string;
-  age: number;
+    name: string;
+    age: number;
 }
 
 const people: Person[] = [
-  { name: "Alice", age: 25 },
-  { name: "Bob", age: 30 },
-  { name: "Alice", age: 35 },
-  { name: "Charlie", age: 30 },
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 30 },
+    { name: "Alice", age: 35 },
+    { name: "Charlie", age: 30 },
 ];
 
 const uniquePeople = uniqueBy(people, (person) => person.name);
 console.log(uniquePeople);
 // => Output: [
-//  { name: 'Alice', age: 25 },
-//  { name: 'Bob', age: 30 },
-//  { name: 'Charlie', age: 30 },
+//    { name: 'Alice', age: 25 },
+//    { name: 'Bob', age: 30 },
+//    { name: 'Charlie', age: 30 },
 // ]
 ```
 
@@ -370,9 +394,9 @@ Unzips an array of tuples into separate arrays for each element position.
 
 ```js
 const tuples: (string | number)[][] = [
-  ["a", 1],
-  ["b", 2],
-  ["c", 3],
+    ["a", 1],
+    ["b", 2],
+    ["c", 3],
 ];
 const [letters, numbers] = unzip(tuples);
 console.log(letters);
@@ -389,7 +413,7 @@ Applies a function to each element of an array along with its index.
 ```ts
 const array = ["apple", "banana", "cherry"];
 withIndex(array, (item, index) => {
-  console.log(`Item: ${item}, Index: ${index}`);
+    console.log(`Item: ${item}, Index: ${index}`);
 });
 // => Item: apple, Index: 0 Item: banana, Index: 1 Item: cherry, Index: 2
 ```
@@ -404,7 +428,7 @@ const arr2 = [4, 5, 6];
 
 const result = zipReduce(arr1, arr2, 0, (acc, a, b) => acc + a * b);
 console.log(result);
-// =>  32
+// =>    32
 ```
 
 > `zipWith`
