@@ -1,5 +1,5 @@
 type Pattern<T> = {
-  [K in keyof T]?: ((value: T[K]) => boolean) | Pattern<T[K]>;
+    [K in keyof T]?: ((value: T[K]) => boolean) | Pattern<T[K]>;
 };
 
 /**
@@ -10,28 +10,31 @@ type Pattern<T> = {
  * @returns {boolean} - True if the object matches the pattern, false otherwise.
  */
 export function match<T>(obj: T, pattern: Pattern<T>): boolean {
-  const patternKeys = Object.keys(pattern);
-  for (let i = 0; i < patternKeys.length; i++) {
-    const key = patternKeys[i];
-    if (pattern.hasOwnProperty(key)) {
-      const value = obj[key as keyof T];
-      const matcher = pattern[key as keyof T];
+	const patternKeys = Object.keys(pattern);
 
-      switch (typeof matcher) {
-        case "function":
-          if (!matcher(value)) return false;
-          break;
+	for (let i = 0; i < patternKeys.length; i++) {
+		const key = patternKeys[i];
 
-        case "object":
-          if (!match(value, matcher)) return false;
-          break;
+		if (Object.prototype.hasOwnProperty.call(pattern, key)) {
+			const value = obj[key as keyof T];
+			const matcher = pattern[key as keyof T];
 
-        default:
-          if (matcher !== value) return false;
-          break;
-      }
-    }
-  }
+			switch (typeof matcher) {
+				case 'function': {
+					if (!matcher(value)) return false;
+					break;
+				}
+				case 'object': {
+					if (!match(value, matcher)) return false;
+					break;
+				}
+				default: {
+					if (matcher !== value) return false;
+					break;
+				}
+			}
+		}
+	}
 
-  return true;
+	return true;
 }

@@ -8,18 +8,18 @@ In this chapter, we will learn how to use operations such as `pattern matching`,
 
 ```ts
 const person1 = {
-  name: "Alice",
-  age: 30,
-  address: {
-    city: "San Francisco",
-    state: "California",
-  },
+    name: "Alice",
+    age: 30,
+    address: {
+        city: "San Francisco",
+        state: "California",
+    },
 };
 
 const pattern1 = {
-  name: "Alice",
-  age: (age: number) => age >= 30,
-  address: { state: "California" },
+    name: "Alice",
+    age: (age: number) => age >= 30,
+    address: { state: "California" },
 };
 console.log(match(person1, pattern1)); // true
 ```
@@ -32,10 +32,10 @@ The match operator is not only used to match against simple values, but it is al
 
 ```ts
 const result = when(
-  11,
-  [(n) => n === 0, () => "zero"],
-  [(n) => n % 2 === 0, () => "even"],
-  [(n) => n % 2 !== 0, () => "odd"]
+    11,
+    [(n) => n === 0, () => "zero"],
+    [(n) => n % 2 === 0, () => "even"],
+    [(n) => n % 2 !== 0, () => "odd"]
 );
 
 console.log(result); // odd
@@ -47,18 +47,18 @@ console.log(result); // odd
 
 ```ts
 enum Color {
-  Red = "red",
-  Blue = "blue",
-  Green = "green",
+    Red = "red",
+    Blue = "blue",
+    Green = "green",
 }
 
 function getColorName(color: Color): string {
-  return cond(
-    color,
-    { predicate: (c) => c === Color.Red, result: "Red" },
-    { predicate: (c) => c === Color.Blue, result: "Blue" },
-    { predicate: (c) => c === Color.Green, result: "Green" }
-  );
+    return cond(
+        color,
+        { predicate: (c) => c === Color.Red, result: "Red" },
+        { predicate: (c) => c === Color.Blue, result: "Blue" },
+        { predicate: (c) => c === Color.Green, result: "Green" }
+    );
 }
 
 console.log(getColorName(Color.Red)); // "Red"
@@ -83,11 +83,11 @@ const addExclamation = (str: string) => str + "!";
 const reverse = (str: string) => str.split("").reverse().join("");
 
 const result2 = pipe<string, string>(
-  capitalize,
-  addExclamation,
-  reverse
+    capitalize,
+    addExclamation,
+    reverse
 )("hello");
-console.log(result2); //  !OLLEH
+console.log(result2); //    !OLLEH
 ```
 
 ### Sigil
@@ -97,7 +97,7 @@ console.log(result2); //  !OLLEH
 ```ts
 const capitalizedWords = sigil(/([A-Z]\w+)/g, "hello world this is a test");
 const numbers = sigil(/\d+/g, "I have 3 apples and 5 oranges.");
-  
+    
 console.log(capitalizedWords); // ["Hello", "World", "This", "Is", "A", "Test"]
 console.log(numbers); // ["3", "5"]
 ```

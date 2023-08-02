@@ -1,5 +1,5 @@
 type MapType<T> = {
-  [key: string]: T;
+    [key: string]: T;
 };
 
 /**
@@ -11,19 +11,18 @@ type MapType<T> = {
  * @returns {MapType<V>} - The updated map.
  */
 export function update<K extends string, V>(
-  map: MapType<V>,
-  key: K,
-  transform: (value: V | undefined) => V
+	map: MapType<V>, key: K,
+	transform: (value: V | undefined) => V,
 ): MapType<V> {
-  const currentValue = map[key];
-  const transformedValue = transform(currentValue);
+	const currentValue = map[key];
+	const transformedValue = transform(currentValue);
 
-  if (currentValue === transformedValue) return map;
+	if (currentValue === transformedValue) return map;
 
-  return {
-    ...map,
-    [key]: transformedValue,
-  };
+	return {
+		...map,
+		[key]: transformedValue,
+	};
 }
 
 // const emptyMap = {};

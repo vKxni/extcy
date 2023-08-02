@@ -7,10 +7,10 @@
  * @returns {T | undefined} - The result of the callback function or undefined.
  */
 export function unless<T>(
-  condition: boolean,
-  callback: () => T
+	condition: boolean,
+	callback: () => T,
 ): T | undefined {
-  if (!condition) {
-    return callback();
-  }
+	if (!condition) {
+		return callback();
+	}
 }

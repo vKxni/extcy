@@ -6,7 +6,8 @@
  * @returns {string[]} - The array of matched groups.
  */
 export function sigil(regex: RegExp, str: string): string[] {
-  const matches = str.match(regex);
-  if (!matches) return [];
-  return matches;
+	const matches = str.match(regex);
+	if (!matches) return [];
+
+	return matches;
 }

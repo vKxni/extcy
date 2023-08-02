@@ -7,16 +7,13 @@
  * @returns {U} - The accumulated result.
  */
 export function foldr<T, U>(
-  list: T[],
-  acc: U,
-  func: (value: T, accumulator: U) => U
+	list: T[], acc: U,
+	func: (value: T, accumulator: U) => U,
 ): U {
-  if (list.length === 0) {
-    return acc;
-  }
+	if (list.length === 0) return acc;
 
-  const [head, ...tail] = list;
-  return func(head, foldr(tail, acc, func));
+	const [head, ...tail] = list;
+	return func(head, foldr(tail, acc, func));
 }
 
 // const numbers = [1, 2, 3, 4, 5];

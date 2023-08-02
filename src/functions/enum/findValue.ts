@@ -6,27 +6,28 @@
  * @returns {TValue | undefined} - The found value, or undefined if no value is found.
  */
 export function findValue<TKey, TValue>(
-  map: Map<TKey, TValue>,
-  predicate: (value: TValue) => boolean
+	map: Map<TKey, TValue>,
+	predicate: (value: TValue) => boolean,
 ): TValue | undefined {
-  const keys = Array.from(map.keys());
-  const length = keys.length;
+	const keys = Array.from(map.keys());
+	const length = keys.length;
 
-  for (let i = 0; i < length; i++) {
-    const key = keys[i];
-    const value = map.get(key);
-    if (value !== undefined && predicate(value)) {
-      return value;
-    }
-  }
+	for (let i = 0; i < length; i++) {
+		const key = keys[i];
+		const value = map.get(key);
 
-  return undefined;
+		if (value !== undefined && predicate(value)) {
+			return value;
+		}
+	}
+
+	return undefined;
 }
 
 // const fruitMap = new Map([
-//   ["apple", "red"],
-//   ["banana", "yellow"],
-//   ["orange", "orange"],
+//     ["apple", "red"],
+//     ["banana", "yellow"],
+//     ["orange", "orange"],
 // ]);
 
 // const value = findValue(fruitMap, (color) => color === "yellow");

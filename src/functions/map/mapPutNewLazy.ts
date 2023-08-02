@@ -7,20 +7,19 @@
  * @returns {Map<K, V>} - The updated map.
  */
 export function mapPutNewLazy<K, V>(
-  map: Map<K, V>,
-  key: K,
-  valueProvider: () => V
+	map: Map<K, V>, key: K,
+	valueProvider: () => V,
 ): Map<K, V> {
-  if (!map.has(key)) {
-    map.set(key, valueProvider());
-  }
+	if (!map.has(key)) {
+		map.set(key, valueProvider());
+	}
 
-  return map;
+	return map;
 }
 
 // const map = new Map([
-//   ["a", 1],
-//   ["b", 2],
+//     ["a", 1],
+//     ["b", 2],
 // ]);
 
 // mapPutNewLazy(map, "c", () => 3);

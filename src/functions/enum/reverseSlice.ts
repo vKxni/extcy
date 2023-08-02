@@ -7,7 +7,7 @@
  * @returns {T[]} - The reversed and sliced section of the array.
  */
 export function reverseSlice<T>(array: T[], start: number, end: number): T[] {
-  return array.slice(start, end + 1).reverse();
+	return array.slice(start, end + 1).reverse();
 }
 
 // const array = [1, 2, 3, 4, 5];

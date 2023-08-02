@@ -5,7 +5,7 @@
  * @returns {string[]} - The filtered list of strings.
  */
 export function asciiPrintable(list: string[]): string[] {
-  return list.filter((str) => /^[\x20-\x7E]*$/.test(str));
+	return list.filter((str) => /^[\x20-\x7E]*$/.test(str));
 }
 
 // const strings = ['Hello', 'World', 'Lol', '🚀', '123', 'αβγ'];

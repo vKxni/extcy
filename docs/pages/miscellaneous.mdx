@@ -5,7 +5,7 @@ Some utilities that don't fit anywhere else.
 > `unless`
 
 ```ts
-unless(condition: boolean, thenValue: any, elseValue: any): any
+unless(condition: boolean, thenValue: unknown, elseValue: unknown): unknown
 ```
 
 Executes a callback function unless a condition is true. If the condition is true, undefined is returned.
@@ -13,13 +13,13 @@ If the condition is false, the callback function is executed and its return valu
 
 ```js
 const person = {
-  name: "John",
-  canVote: false,
-  age: 30,
+    name: "John",
+    canVote: false,
+    age: 30,
 };
 
 unless(person.age < 18, () => {
-  person.canVote = true;
+    person.canVote = true;
 });
 
 console.log(person);

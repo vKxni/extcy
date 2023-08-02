@@ -5,7 +5,7 @@
  * @returns {T[]} - The new array with unique elements.
  */
 export function uniq<T>(list: T[]): T[] {
-  return [...new Set(list)];
+	return [...new Set(list)];
 }
 
 // const numbers = [1, 2, 2, 3, 4, 4, 5];

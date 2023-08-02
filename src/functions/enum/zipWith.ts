@@ -7,18 +7,17 @@
  * @returns {V[]} - The array of results.
  */
 export function zipWith<T, U, V>(
-  arr1: T[],
-  arr2: U[],
-  fn: (a: T, b: U) => V
+	arr1: T[], arr2: U[],
+	fn: (a: T, b: U) => V,
 ): V[] {
-  const length = Math.min(arr1.length, arr2.length);
-  const result: V[] = [];
+	const length = Math.min(arr1.length, arr2.length);
+	const result: V[] = [];
 
-  for (let i = 0; i < length; i++) {
-    result.push(fn(arr1[i], arr2[i]));
-  }
+	for (let i = 0; i < length; i++) {
+		result.push(fn(arr1[i], arr2[i]));
+	}
 
-  return result;
+	return result;
 }
 
 // const arr1 = [1, 2, 3];

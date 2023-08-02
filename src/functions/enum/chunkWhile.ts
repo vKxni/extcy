@@ -8,29 +8,29 @@ type PredicateFunction<T> = (a: T, b: T) => boolean;
  * @returns {T[][]} - An array of chunks.
  */
 export function chunkWhile<T>(
-  list: T[],
-  predicate: PredicateFunction<T>
+	list: T[],
+	predicate: PredicateFunction<T>,
 ): T[][] {
-  const chunks: T[][] = [];
-  let currentChunk: T[] = [];
+	const chunks: T[][] = [];
+	let currentChunk: T[] = [];
 
-  for (let i = 0; i < list.length; i++) {
-    const currentItem = list[i];
-    const previousItem = i > 0 ? list[i - 1] : undefined;
+	for (let i = 0; i < list.length; i++) {
+		const currentItem = list[i];
+		const previousItem = i > 0 ? list[i - 1] : undefined;
 
-    if (previousItem === undefined || predicate(previousItem, currentItem)) {
-      currentChunk.push(currentItem);
-    } else {
-      chunks.push(currentChunk);
-      currentChunk = [currentItem];
-    }
-  }
+		if (previousItem === undefined || predicate(previousItem, currentItem)) {
+			currentChunk.push(currentItem);
+		} else {
+			chunks.push(currentChunk);
+			currentChunk = [currentItem];
+		}
+	}
 
-  if (currentChunk.length > 0) {
-    chunks.push(currentChunk);
-  }
+	if (currentChunk.length > 0) {
+		chunks.push(currentChunk);
+	}
 
-  return chunks;
+	return chunks;
 }
 
 // const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
