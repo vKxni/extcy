@@ -80,7 +80,21 @@ class FileInfoConverter {
      * @returns File.Stat object.
      * 
      */
-    static fromRecord(fileInfo: any): FileStat {
+    static fromRecord(fileInfo: {
+        size: number;
+        type: 'device' | 'directory' | 'regular' | 'other' | 'symlink';
+        access: 'read' | 'write' | 'read_write' | 'none';
+        atime: Date | number;
+        mtime: Date | number;
+        ctime: Date | number;
+        mode: number;
+        links: number;
+        major_device: number;
+        minor_device: number;
+        inode: number;
+        uid: number;
+        gid: number;
+    }): FileStat {
         return {
             size: fileInfo.size,
             type: fileInfo.type,
@@ -109,8 +123,8 @@ class FileInfoConverter {
             type: stat.type,
             access: stat.access,
             atime: FileInfoConverter.formatDateTime(stat.atime),
-            mtime: FileInfoConverter.formatDateTime(stat.mtime),
-            ctime: FileInfoConverter.formatDateTime(stat.ctime),
+            mtime: FileInfoConverter.formatDateTime(stat.mtime).toString(), // Convert DateTime to string
+            ctime: FileInfoConverter.formatDateTime(stat.ctime).toString(), // Convert DateTime to string
             mode: stat.mode,
             links: stat.links,
             major_device: stat.major_device,

@@ -4,6 +4,10 @@ interface Access<V> {
     get(key: unknown): V | null;
 }
 
+function isObjectWithKey<K>(key: K | { key: K }): key is { key: K } {
+    return typeof key === 'object' && 'key' in key!;
+}
+
 /**
  * Access behavior implementation for keyword lists.
  *
@@ -75,8 +79,8 @@ class MapAccess<K, V> implements Access<V> {
      
      * TODO: Fix "any" type
      */
-    get(key: any): V | null {
-        const mapKey = typeof key === 'object' ? key.key : key;
+    get(key: K | { key: K }): V | null {
+        const mapKey = isObjectWithKey(key) ? key.key : key;
         return this._map.get(mapKey) || null;
     }
 }
