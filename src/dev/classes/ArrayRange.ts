@@ -5,40 +5,40 @@
  * https://hexdocs.pm/elixir/1.13/Range.html
  * 
  * ```ts
- const range1 = new ArrayRange(1, 10);
-console.log(range1.toArray()); // => [1, 2, 3 ... 10]
+    const range1 = new ArrayRange(1, 10);
+    console.log(range1.toArray()); // => [1, 2, 3 ... 10]
 
-const range2 = new ArrayRange(1, 3, 2);
-console.log(range2.toArray()); // => [1, 3]
+    const range2 = new ArrayRange(1, 3, 2);
+    console.log(range2.toArray()); // => [1, 3]
 
-const range3 = new ArrayRange(3, 1, -1);
-console.log(range3.toArray()); // => [3, 2, 1]
+    const range3 = new ArrayRange(3, 1, -1);
+    console.log(range3.toArray()); // => [3, 2, 1]
 
-const range4 = new ArrayRange(1, 1);
-console.log(range4.toArray()); // => [1]
+    const range4 = new ArrayRange(1, 1);
+    console.log(range4.toArray()); // => [1]
 
-const range5 = new ArrayRange(1, 1, 2);
-console.log(range5.toArray()); // => [1]
+    const range5 = new ArrayRange(1, 1, 2);
+    console.log(range5.toArray()); // => [1]
 
-const range6 = new ArrayRange(10, 0);
-console.log(range6.toArray()); // => []
+    const range6 = new ArrayRange(10, 0);
+    console.log(range6.toArray()); // => []
 
-const range7 = new ArrayRange(0, 10, -1);
-console.log(range7.toArray()); // => []
+    const range7 = new ArrayRange(0, 10, -1);
+    console.log(range7.toArray()); // => []
 
-// Test Enumerable protocol functions
-const range8 = new ArrayRange(1, 10);
-const sum = range8.toArray().reduce((acc, i) => i * i + acc, 0);
-console.log(sum); // => 385
+    // Test Enumerable protocol functions
+    const range8 = new ArrayRange(1, 10);
+    const sum = range8.toArray().reduce((acc, i) => i * i + acc, 0);
+    console.log(sum); // => 385
 
-const count = range8.toArray().length;
-console.log(count); // => 10
+    const count = range8.toArray().length;
+    console.log(count); // => 10
 
-const isMember1 = range8.toArray().includes(11);
-console.log(isMember1); // => false
+    const isMember1 = range8.toArray().includes(11);
+    console.log(isMember1); // => false
 
-const isMember2 = range8.toArray().includes(8);
-console.log(isMember2); // => true
+    const isMember2 = range8.toArray().includes(8);
+    console.log(isMember2); // => true
 ```
  */
 class ArrayRange {
