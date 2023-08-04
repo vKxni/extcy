@@ -2,44 +2,7 @@
  * Represents a sequence of ascending or descending integers with a common difference called step.
  * Ranges are always inclusive.
  * 
- * https://hexdocs.pm/elixir/1.13/Range.html
- * 
- * ```ts
-    const range1 = new ArrayRange(1, 10);
-    console.log(range1.toArray()); // => [1, 2, 3 ... 10]
-
-    const range2 = new ArrayRange(1, 3, 2);
-    console.log(range2.toArray()); // => [1, 3]
-
-    const range3 = new ArrayRange(3, 1, -1);
-    console.log(range3.toArray()); // => [3, 2, 1]
-
-    const range4 = new ArrayRange(1, 1);
-    console.log(range4.toArray()); // => [1]
-
-    const range5 = new ArrayRange(1, 1, 2);
-    console.log(range5.toArray()); // => [1]
-
-    const range6 = new ArrayRange(10, 0);
-    console.log(range6.toArray()); // => []
-
-    const range7 = new ArrayRange(0, 10, -1);
-    console.log(range7.toArray()); // => []
-
-    // Test Enumerable protocol functions
-    const range8 = new ArrayRange(1, 10);
-    const sum = range8.toArray().reduce((acc, i) => i * i + acc, 0);
-    console.log(sum); // => 385
-
-    const count = range8.toArray().length;
-    console.log(count); // => 10
-
-    const isMember1 = range8.toArray().includes(11);
-    console.log(isMember1); // => false
-
-    const isMember2 = range8.toArray().includes(8);
-    console.log(isMember2); // => true
-```
+ * @see https://hexdocs.pm/elixir/1.13/Range.html
  */
 class ArrayRange {
     private _first: number;
@@ -92,49 +55,63 @@ class ArrayRange {
      * @returns An array containing the elements of the range.
      */
     toArray(): number[] {
-        const array: number[] = [];
+        return [...this.generateRange()];
+    }
+
+    /**
+     * Returns a generator that yields all the values in the range.
+     * @returns A generator yielding the elements of the range.
+     */
+    private *generateRange(): Generator<number, void, unknown> {
         let current = this._first;
 
         while ((this._step > 0 && current <= this._last) || (this._step < 0 && current >= this._last)) {
-            array.push(current);
+            yield current;
             current += this._step;
         }
+    }
 
-        return array;
+    /**
+     * Implements the iterator protocol for the ArrayRange class.
+     * @returns A generator yielding the elements of the range.
+     */
+    [Symbol.iterator](): Generator<number, void, unknown> {
+        return this.generateRange();
     }
 }
 
+// Test cases (uncomment these to run the tests)
 // const range1 = new ArrayRange(1, 10);
-// console.log(range1.toArray()); // => [1, 2, 3 ... 10]
+// console.log([...range1]); // => [1, 2, 3 ... 10]
 
 // const range2 = new ArrayRange(1, 3, 2);
-// console.log(range2.toArray()); // => [1, 3]
+// console.log([...range2]); // => [1, 3]
 
 // const range3 = new ArrayRange(3, 1, -1);
-// console.log(range3.toArray()); // => [3, 2, 1]
+// console.log([...range3]); // => [3, 2, 1]
 
 // const range4 = new ArrayRange(1, 1);
-// console.log(range4.toArray()); // => [1]
+// console.log([...range4]); // => [1]
 
 // const range5 = new ArrayRange(1, 1, 2);
-// console.log(range5.toArray()); // => [1]
+// console.log([...range5]); // => [1]
 
 // const range6 = new ArrayRange(10, 0);
-// console.log(range6.toArray()); // => []
+// console.log([...range6]); // => []
 
 // const range7 = new ArrayRange(0, 10, -1);
-// console.log(range7.toArray()); // => []
+// console.log([...range7]); // => []
 
 // // Test Enumerable protocol functions
 // const range8 = new ArrayRange(1, 10);
-// const sum = range8.toArray().reduce((acc, i) => i * i + acc, 0);
+// const sum = [...range8].reduce((acc, i) => i * i + acc, 0);
 // console.log(sum); // => 385
 
-// const count = range8.toArray().length;
+// const count = [...range8].length;
 // console.log(count); // => 10
 
-// const isMember1 = range8.toArray().includes(11);
+// const isMember1 = [...range8].includes(11);
 // console.log(isMember1); // => false
 
-// const isMember2 = range8.toArray().includes(8);
+// const isMember2 = [...range8].includes(8);
 // console.log(isMember2); // => true
