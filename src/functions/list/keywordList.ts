@@ -5,9 +5,9 @@ type KeywordListType = KeywordTuple[];
  * Converts a keyword list in array format to object format.
  * @param keywordList The keyword list in array format.
  * @returns An object representation of the keyword list.
- * 
+ *
  * ```ts
-const options: KeywordList = [
+const options = [
     ["exit_on_close", true],
     ["active", "once"],
     ["packet_size", 1024],
@@ -32,11 +32,11 @@ const updatedOptionsList = keywordObjectToList(optionsObject);
 console.log(updatedOptionsList); // => [ [ 'exit_on_close', true ], [ 'active', 'continuous' ], [ 'packet_size', 1024 ] ]
 ```
  */
-function keywordListToObject(keywordList: KeywordListType): Record<string, unknown> {
-    return keywordList.reduce((acc, [key, value]) => {
-        acc[key] = value;
-        return acc;
-    }, {} as Record<string, unknown>);
+export function keywordListToObject(keywordList: KeywordListType): Record<string, unknown> {
+	return keywordList.reduce((acc, [key, value]) => {
+		acc[key] = value;
+		return acc;
+	}, {} as Record<string, unknown>);
 }
 
 /**
@@ -44,11 +44,11 @@ function keywordListToObject(keywordList: KeywordListType): Record<string, unkno
  * @param keywordObject The keyword list in object format.
  * @returns An array representation of the keyword list.
  */
-function keywordObjectToList(keywordObject: Record<string, unknown>): KeywordListType {
-    return Object.entries(keywordObject) as KeywordListType;
+export function keywordObjectToList(keywordObject: Record<string, unknown>): KeywordListType {
+	return Object.entries(keywordObject) as KeywordListType;
 }
 
-// const options: KeywordList = [
+// const options = [
 //     ["exit_on_close", true],
 //     ["active", "once"],
 //     ["packet_size", 1024],

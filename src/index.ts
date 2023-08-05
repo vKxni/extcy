@@ -72,3 +72,11 @@ export * from './operations/when';
 // utility
 export * from './utility/pipe';
 export * from './utility/sigil';
+
+// PREVIEW / NEW FEATURES
+export * from './dev/classes/ArrayRange';
+export * from './dev/classes/FileInfoConverter';
+export * from './dev/classes/Kernel';
+export * from './dev/classes/MapAccess';
+export * from './dev/classes/MapSet';
+export * from './dev/classes/OptionParser';

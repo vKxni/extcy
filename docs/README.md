@@ -1,1 +1,1 @@
-The documentation website for Extcy - powered by Nextra.
+The documentation website for Extcy - powered by Extcy.

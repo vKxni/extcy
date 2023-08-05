@@ -1,83 +1,83 @@
 /**
  * Represents a sequence of ascending or descending integers with a common difference called step.
  * Ranges are always inclusive.
- * 
+ *
  * @see https://hexdocs.pm/elixir/1.13/Range.html
  */
-class ArrayRange {
-    private _first: number;
-    private _last: number;
-    private _step: number;
+export class ArrayRange {
+	private _first: number;
+	private _last: number;
+	private _step: number;
 
-    /**
+	/**
      * Creates a new ArrayRange instance.
      * @param first The first value in the range.
      * @param last The last value in the range.
      * @param step The step size between elements (default is 1).
      * @throws An error if the step is 0.
      */
-    constructor(first: number, last: number, step: number = 1) {
-        if (step === 0) {
-            throw new Error("Step cannot be 0.");
-        }
+	constructor(first: number, last: number, step: number = 1) {
+		if (step === 0) {
+			throw new Error('Step cannot be 0.');
+		}
 
-        this._first = first;
-        this._last = last;
-        this._step = step;
-    }
+		this._first = first;
+		this._last = last;
+		this._step = step;
+	}
 
-    /**
+	/**
      * Gets the first value of the range.
      * @returns The first value of the range.
      */
-    get first(): number {
-        return this._first;
-    }
+	get first(): number {
+		return this._first;
+	}
 
-    /**
+	/**
      * Gets the last value of the range.
      * @returns The last value of the range.
      */
-    get last(): number {
-        return this._last;
-    }
+	get last(): number {
+		return this._last;
+	}
 
-    /**
+	/**
      * Gets the step size between elements in the range.
      * @returns The step size of the range.
      */
-    get step(): number {
-        return this._step;
-    }
+	get step(): number {
+		return this._step;
+	}
 
-    /**
+	/**
      * Returns an array containing all the values in the range.
      * @returns An array containing the elements of the range.
      */
-    toArray(): number[] {
-        return [...this.generateRange()];
-    }
+	toArray(): number[] {
+		return [...this.generateRange()];
+	}
 
-    /**
+	/**
      * Returns a generator that yields all the values in the range.
      * @returns A generator yielding the elements of the range.
      */
-    private *generateRange(): Generator<number, void, unknown> {
-        let current = this._first;
+	private *generateRange(): Generator<number, void, unknown> {
+		let current = this._first;
 
-        while ((this._step > 0 && current <= this._last) || (this._step < 0 && current >= this._last)) {
-            yield current;
-            current += this._step;
-        }
-    }
+		while ((this._step > 0 && current <= this._last) || (this._step < 0 && current >= this._last)) {
+			yield current;
+			current += this._step;
+		}
+	}
 
-    /**
+	/**
      * Implements the iterator protocol for the ArrayRange class.
      * @returns A generator yielding the elements of the range.
      */
-    [Symbol.iterator](): Generator<number, void, unknown> {
-        return this.generateRange();
-    }
+	[Symbol.iterator](): Generator<number, void, unknown> {
+		return this.generateRange();
+	}
 }
 
 // Test cases (uncomment these to run the tests)

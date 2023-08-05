@@ -1,0 +1,238 @@
+# Extcy Classes
+
+This is a preview feature page and is heavily under development. We are slowly migrating over to a class-based solution for `Enum`, `List`, `Map`. 
+Utility functions and guards will not change in the near future - there we want to keep things simple, therefore they remain being simple functions. 
+
+> `ArrayRange`
+
+Represents a sequence of ascending or descending integers with a common difference called step.
+
+```ts
+const range1 = new ArrayRange(1, 10);
+console.log([...range1]); // => [1, 2, 3 ... 10]
+
+const range2 = new ArrayRange(1, 3, 2);
+console.log([...range2]); // => [1, 3]
+
+const range3 = new ArrayRange(3, 1, -1);
+console.log([...range3]); // => [3, 2, 1]
+
+const range4 = new ArrayRange(1, 1);
+console.log([...range4]); // => [1]
+
+const range5 = new ArrayRange(1, 1, 2);
+console.log([...range5]); // => [1]
+
+const range6 = new ArrayRange(10, 0);
+console.log([...range6]); // => []
+
+const range7 = new ArrayRange(0, 10, -1);
+console.log([...range7]); // => []
+
+// Enumerable protocol functions
+const range8 = new ArrayRange(1, 10);
+const sum = [...range8].reduce((acc, i) => i * i + acc, 0);
+console.log(sum); // => 385
+
+const count = [...range8].length;
+console.log(count); // => 10
+
+const isMember1 = [...range8].includes(11);
+console.log(isMember1); // => false
+
+const isMember2 = [...range8].includes(8);
+console.log(isMember2); // => true
+```
+
+> `Kernel`
+
+Provides a collection of utility functions similar to those found in the Elixir standard library.
+
+```ts
+const kernel = new Kernel();
+
+console.log(kernel.binaryPart("hello", 1, 3)); // => "ell"
+console.log(kernel.bitSize("110101")); // => 6
+console.log(kernel.byteSize("110101")); // => 1
+console.log(kernel.ceil(3.14)); // => 4
+console.log(kernel.div(10, 3)); // => 3
+
+const tuple = [1, "hello", true];
+console.log(kernel.elem(tuple, 1)); // => "hello"
+console.log(kernel.floor(3.14)); // => 3
+
+
+const list = [10, 20, 30];
+console.log(kernel.hd(list)); // => 10
+
+console.log(kernel.in(3, [1, 2, 3])); // => true
+
+console.log(kernel.isAtom("hello")); // => true
+
+console.log(kernel.isBinary("hello")); // => true
+
+console.log(kernel.isBoolean(true)); // => true
+
+console.log(kernel.isException(new Error("Some error"))); // => true
+
+console.log(kernel.isFloat(3.14)); // => true
+
+console.log(kernel.isInteger(42)); // => true
+
+console.log(kernel.isList([1, 2, 3])); // => true
+
+console.log(kernel.isMap({ name: "John", age: 30 })); // => true
+
+console.log(kernel.isNil(null)); // => true
+
+console.log(kernel.isNumber(42)); // => true
+
+console.log(kernel.isPid({ pid: "process_id@node" })); // => true
+
+console.log(kernel.isPort({ port: "port_id@node" })); // => true
+
+console.log(kernel.isReference({ ref: "ref_id@node" })); // => true
+
+console.log(kernel.isTuple([1, 2, 3])); // => true
+
+console.log(kernel.length([1, 2, 3])); // => 3
+
+console.log(kernel.mapSize({ name: "John", age: 30 })); // => 2
+
+console.log(kernel.not(true)); // => false
+
+console.log(kernel.or(true, false)); // => true
+
+console.log(kernel.rem(10, 3)); // => 1
+
+console.log(kernel.round(3.14)); // => 3
+
+console.log(kernel.tl([1, 2, 3])); // => [2, 3]
+
+console.log(kernel.trunc(3.14)); // => 3
+
+console.log(kernel.tupleSize([1, 2, 3])); // => 3
+```
+
+> `MapAccess`
+
+Access behavior implementation for keyword lists.
+
+```ts
+const mapData: Map<unknown, unknown> = new Map();
+mapData.set('name', 'John');
+mapData.set(42, 'answer');
+mapData.set('email', 'john@example.com');
+
+const mapAccess = new MapAccess(mapData);
+
+console.log(mapAccess.get('name')); // John
+console.log(mapAccess.get(42)); // answer
+console.log(mapAccess.get({ key: 'email' })); // john@example.com
+console.log(mapAccess.get('gender')); // null
+```
+
+> `MapSet`
+
+A class representing a Set data structure.
+
+```ts
+const mapSet = MapSet.new<number>([2]);
+mapSet.put(4);
+mapSet.put(0);
+console.log(mapSet.values()); // => [2, 4, 0]
+
+mapSet.put(4); // Should not add duplicate element
+console.log(mapSet.values()); // => [2, 4, 0]
+
+console.log(mapSet.has(4)); // => true
+console.log(mapSet.has(5)); // => false
+
+mapSet.remove(4);
+console.log(mapSet.values()); // => [2, 0]
+
+const otherSet = MapSet.new<number>([2, 4]);
+console.log(mapSet.intersection(otherSet).values()); // => [2]
+console.log(mapSet.difference(otherSet).values()); // => [0]
+console.log(mapSet.union(otherSet).values()); // => [2, 0, 4]
+
+const subset = MapSet.new<number>([2]);
+console.log(subset.isSubset(mapSet)); // => true
+```
+
+> `OptionParser`
+
+Functions for parsing command line arguments.
+
+```ts
+const argv: string[] = ["--debug", "--output", "output.txt"];
+const opts: Options = { debug: "boolean", => "string" };
+const parsedOptions = OptionParser.parse(argv, opts);
+console.log(parsedOptions); // => { debug: true, => 'output.txt' }
+
+const str = "--verbose --input input.txt";
+const argvFromString = OptionParser.split(str);
+console.log(argvFromString); // => [ '--verbose', '--input', 'input.txt' ]
+
+const options = { verbose: true, input: "input.txt" };
+const argvFromOptions = OptionParser.toArgv(options);
+console.log(argvFromOptions); // => [ '--verbose', '--input', 'input.txt' ]
+```
+
+> `FileInfoConverter`
+
+Converts a :file_info record into a File.Stat.
+
+```ts
+const elixirFileInfo = {
+    size: 1024,
+    type: 'regular',
+    access: 'read_write',
+    atime: 1669820525000,
+    mtime: '2023-08-01T12:34:56.789Z',
+    ctime: '2023-08-01T12:34:56.789Z',
+    mode: 0o755,
+    links: 1,
+    major_device: 0,
+    minor_device: 0,
+    inode: 12345,
+    uid: 1000,
+    gid: 1000,
+};
+
+const tsFileStat = FileInfoConverter.fromRecord(elixirFileInfo);
+console.log(tsFileStat);
+
+const tsFileInfo = FileInfoConverter.toRecord(tsFileStat);
+console.log(tsFileInfo);
+{
+  size: 1024,
+  type: 'regular',
+  access: 'read_write',
+  atime: 1669820525000,
+  mtime: 2023-08-01T12:34:56.789Z,
+  ctime: 2023-08-01T12:34:56.789Z,
+  mode: 493,
+  links: 1,
+  major_device: 0,
+  minor_device: 0,
+  inode: 12345,
+  uid: 1000,
+  gid: 1000
+}
+{
+  size: 1024,
+  type: 'regular',
+  access: 'read_write',
+  atime: 1669820525000,
+  mtime: '2023-08-01T12:34:56.789Z',
+  ctime: '2023-08-01T12:34:56.789Z',
+  mode: 493,
+  links: 1,
+  major_device: 0,
+  minor_device: 0,
+  inode: 12345,
+  uid: 1000,
+  gid: 1000
+}
+```
