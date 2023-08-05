@@ -31,14 +31,14 @@
 ```
 */
 class MapSet<T> {
-    private elements: Set<T>;
+    private _elements: Set<T>;
 
     /**
      * Creates a new MapSet instance.
      * @param elements An array of elements to initialize the set.
      */
     constructor(elements: T[] = []) {
-        this.elements = new Set(elements);
+        this._elements = new Set(elements);
     }
 
     /**
@@ -46,7 +46,7 @@ class MapSet<T> {
      * @param value The value to be added to the set.
      */
     put(value: T): void {
-        this.elements.add(value);
+        this._elements.add(value);
     }
 
     /**
@@ -54,7 +54,7 @@ class MapSet<T> {
      * @param value The value to be removed from the set.
      */
     remove(value: T): void {
-        this.elements.delete(value);
+        this._elements.delete(value);
     }
 
     /**
@@ -63,7 +63,7 @@ class MapSet<T> {
      * @returns True if the element exists in the set, otherwise false.
      */
     has(value: T): boolean {
-        return this.elements.has(value);
+        return this._elements.has(value);
     }
 
     /**
@@ -71,7 +71,7 @@ class MapSet<T> {
      * @returns The number of elements in the set.
      */
     size(): number {
-        return this.elements.size;
+        return this._elements.size;
     }
 
     /**
@@ -79,7 +79,7 @@ class MapSet<T> {
      * @returns An array containing the elements of the set.
      */
     toArray(): T[] {
-        return Array.from(this.elements);
+        return Array.from(this._elements);
     }
 
     /**
@@ -104,7 +104,7 @@ class MapSet<T> {
      * @returns True if the set is empty, otherwise false.
      */
     isEmpty(): boolean {
-        return this.elements.size === 0;
+        return this._elements.size === 0;
     }
 
     /**
@@ -114,7 +114,7 @@ class MapSet<T> {
      */
     intersection(otherSet: MapSet<T>): MapSet<T> {
         const intersectionSet = new MapSet<T>();
-        for (const elem of this.elements) {
+        for (const elem of this._elements) {
             if (otherSet.has(elem)) {
                 intersectionSet.put(elem);
             }
@@ -129,7 +129,7 @@ class MapSet<T> {
      */
     difference(otherSet: MapSet<T>): MapSet<T> {
         const differenceSet = new MapSet<T>();
-        for (const elem of this.elements) {
+        for (const elem of this._elements) {
             if (!otherSet.has(elem)) {
                 differenceSet.put(elem);
             }

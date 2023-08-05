@@ -38,9 +38,8 @@ class OptionParser {
      */
     static parse(argv: string[], opts: Options = {}): ParsedOptions {
         const result: ParsedOptions = {};
-        let i = 0;
 
-        while (i < argv.length) {
+        for (let i = 0; i < argv.length; i++) {
             const arg = argv[i];
             if (!arg.startsWith("--")) {
                 break;
@@ -69,6 +68,7 @@ class OptionParser {
 
         return result;
     }
+
 
     /**
      * Similar to `parse`, but only parses the head of `argv`.

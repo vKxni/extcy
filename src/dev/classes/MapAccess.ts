@@ -30,14 +30,14 @@ function isObjectWithKey<K>(key: K | { key: K }): key is { key: K } {
     ```
  */
 class KeywordAccess {
-    private keywordList: KeywordList;
+    private _keywordList: KeywordList;
 
     /**
      * Creates a new instance of `KeywordAccess` with the provided keyword list.
      * @param keywordList The keyword list to be accessed.
      */
     constructor(keywordList: KeywordList) {
-        this.keywordList = keywordList;
+        this._keywordList = keywordList;
     }
 
     /**
@@ -46,7 +46,7 @@ class KeywordAccess {
      * @returns The value associated with the key, or `null` if the key is not found.
      */
     get(key: string): unknown {
-        const result = this.keywordList.find(([k]) => k === key);
+        const result = this._keywordList.find(([k]) => k === key);
         return result ? result[1] : null;
     }
 }
