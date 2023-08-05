@@ -1,6 +1,6 @@
 {
 	"name": "extcy",
-	"version": "1.2.8",
+	"version": "1.2.9",
 	"description": "Powerful functional Elixir composition for TypeScript.",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
