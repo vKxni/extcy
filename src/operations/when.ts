@@ -4,6 +4,17 @@
  * @param {T} value - The value to evaluate.
  * @param {...[(val: T) => boolean, (val: T) => R]} patterns - The patterns and corresponding callback functions to evaluate against.
  * @returns {R | undefined} - The result of the matching callback function or undefined.
+ *
+ * ```ts
+  const result = when(
+    11,
+    [(n) => n === 0, () => "zero"],
+    [(n) => n % 2 === 0, () => "even"],
+    [(n) => n % 2 !== 0, () => "odd"]
+  );
+
+	console.log(result); // odd
+```
  */
 export function when<T, R>(
 	value: T,
@@ -18,3 +29,12 @@ export function when<T, R>(
 
 	return undefined;
 }
+
+// const result = when(
+// 	11,
+// 	[(n) => n === 0, () => 'zero'],
+// 	[(n) => n % 2 === 0, () => 'even'],
+// 	[(n) => n % 2 !== 0, () => 'odd'],
+// );
+
+// console.log(result); // odd

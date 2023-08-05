@@ -8,6 +8,20 @@ type Pattern<T> = {
  * @param {T} obj - The object to match.
  * @param {Pattern<T>} pattern - The pattern to match against.
  * @returns {boolean} - True if the object matches the pattern, false otherwise.
+ *
+ ```ts
+ 	const result = match(
+	{
+  	name: 'John',
+  	age: 30,
+	},
+	{
+  	name: 'John',
+  	age: (age) => age > 20,
+    });
+
+	console.log(result); // => true
+```
  */
 export function match<T>(obj: T, pattern: Pattern<T>): boolean {
 	const patternKeys = Object.keys(pattern);
@@ -38,3 +52,16 @@ export function match<T>(obj: T, pattern: Pattern<T>): boolean {
 
 	return true;
 }
+
+// const result = match(
+// 	{
+// 		name: 'John',
+// 		age: 30,
+// 	},
+// 	{
+// 		name: 'John',
+// 		age: (age) => age > 20,
+// 	},
+// );
+
+// console.log(result); // => true
