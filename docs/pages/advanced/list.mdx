@@ -186,9 +186,39 @@ console.log(result);
 // => [[ { id: 1, name: 'Alice' }, 'Unknown' ], [ { id: 2, name: 'Bob' }, 'Unknown' ], [ { id: 3, name: 'Charlie' }, 'Unknown' ]]
 ```
 
+> `keywordListToObject` | `keywordObjectToList`
+
+Converts a keyword list in array format to object format.
+
 > `popAt`
 
-Removes an item at the specified index from a list.
+Removes an item at the specified index from a list | Converts a keyword list in object format to array format.
+
+```js
+const options = [
+    ["exit_on_close", true],
+    ["active", "once"],
+    ["packet_size", 1024],
+];
+
+// Converting the keyword list to an object
+const optionsObject = keywordListToObject(options);
+console.log(optionsObject);
+// => { exit_on_close: true, active: 'once', packet_size: 1024 }
+
+// Accessing values from the keyword list object
+console.log(optionsObject.exit_on_close); // => true
+console.log(optionsObject.active); // => 'once'
+console.log(optionsObject.packet_size); // => 1024
+
+// Modifying values in the keyword list object
+optionsObject.active = 'continuous';
+console.log(optionsObject.active); // => 'continuous'
+
+// Converting the keyword list object back to an array
+const updatedOptionsList = keywordObjectToList(optionsObject);
+console.log(updatedOptionsList); // => [ [ 'exit_on_close', true ], [ 'active', 'continuous' ], [ 'packet_size', 1024 ] ]
+```
 
 ```js
 const list = [1, 2, 3, 4, 5];

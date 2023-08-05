@@ -58,6 +58,16 @@ console.log(mapEqual(map1, map3));
 // => false
 ```
 
+> `mapObjectValues`
+
+Applies the provided callback function to each key-value pair in the input object and returns a new object.
+
+```js
+const inputMap: Record<string, number> = { "a": 1, "b": 2 };
+const outputMap: Record<string, number> = mapObjectValues(inputMap, (k, v) => v * 2);
+console.log(outputMap); // { a: 2, b: 4 }
+```
+
 > `mapPutNewLazy`
 
 Adds a key-value pair to a map if the key does not already exist.

@@ -33,6 +33,7 @@ export * from './functions/enum/unzip';
 export * from './functions/enum/withIndex';
 export * from './functions/enum/zipReduce';
 export * from './functions/enum/zipWith';
+export * from './functions/enum/enumMap';
 
 // list
 export * from './functions/list/asciiPrintable';
@@ -50,6 +51,7 @@ export * from './functions/list/keyStore';
 export * from './functions/list/popAt';
 export * from './functions/list/updateAt';
 export * from './functions/list/wrap';
+export * from './functions/list/keywordList';
 
 // map
 export * from './functions/map/getAndUpdate';
@@ -60,6 +62,7 @@ export * from './functions/map/mapValues';
 export * from './functions/map/popLazy';
 export * from './functions/map/reject';
 export * from './functions/map/update';
+export * from './functions/map/mapObjectValues';
 
 // guards
 export * from './guards/unless';

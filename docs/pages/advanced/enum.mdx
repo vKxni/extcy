@@ -255,6 +255,16 @@ console.log(mapFetch(fruitMap, "grape"));
 // => undefined
 ```
 
+> `enumMap`
+
+Applies the provided callback function to each element of the input array and returns a new array with the results.
+
+```js
+const array: number[] = [1, 2, 3];
+const out: number[] = enumMap(array, (x) => x * 2)
+console.log(out); // [2, 4, 6]
+```
+
 > `mapReduce`
 
 Maps each element of an array using a mapper function and reduces the mapped values into a single result using a reducer function.

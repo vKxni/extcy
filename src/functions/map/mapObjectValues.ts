@@ -7,9 +7,9 @@
  * @returns A new object with the results of applying the callback function to each key-value pair.
  *
     ```ts
-const inputMap: Record<string, number> = { "a": 1, "b": 2 };
-const outputMap: Record<string, number> = mapObjectValues(inputMap, (k, v) => v * 2);
-console.log(outputMap); // { a: 2, b: 4 }
+	const inputMap: Record<string, number> = { "a": 1, "b": 2 };
+	const outputMap: Record<string, number> = mapObjectValues(inputMap, (k, v) => v * 2);
+	console.log(outputMap); // { a: 2, b: 4 }
 ```
  */
 export function mapObjectValues<K extends string, V, R>(
