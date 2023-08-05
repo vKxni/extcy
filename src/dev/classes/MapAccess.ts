@@ -76,8 +76,6 @@ class MapAccess<K, V> implements Access<V> {
      * If the key is not found in the Map, returns null.
      * @param key The key to be accessed. It can be of unknown type.
      * @returns The value associated with the specified key, or null if the key is not found.
-     
-     * TODO: Fix "any" type
      */
     get(key: K | { key: K }): V | null {
         const mapKey = isObjectWithKey(key) ? key.key : key;

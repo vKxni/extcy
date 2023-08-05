@@ -117,7 +117,7 @@ class FileInfoConverter {
      * @param stat The File.Stat object to convert.
      * @returns :file_info record.
      */
-    static toRecord(stat: FileStat): any {
+    static toRecord(stat: FileStat): FileStat {
         return {
             size: stat.size,
             type: stat.type,

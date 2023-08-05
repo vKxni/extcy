@@ -124,7 +124,7 @@ class Kernel {
      * @param index - The zero-based index.
      * @returns The element at the specified index in the tuple.
      */
-    elem(tuple: any[], index: number): any {
+    elem(tuple: unknown[], index: number): unknown {
         return tuple[index];
     }
 
@@ -143,7 +143,7 @@ class Kernel {
      * @returns The first element of the list.
      * @throws An `Error` if the list is empty.
      */
-    hd(list: any[]): any {
+    hd(list: unknown[]): unknown {
         if (list.length === 0) {
             throw new Error("ArgumentError: List is empty");
         }
@@ -156,7 +156,7 @@ class Kernel {
      * @param right - The collection to check membership against.
      * @returns `true` if the element is a member of the collection, `false` otherwise.
      */
-    in(left: any, right: any[]): boolean {
+    in(left: unknown, right: unknown[]): boolean {
         return right.includes(left);
     }
 
@@ -165,7 +165,7 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is an atom; otherwise, returns `false`.
      */
-    isAtom(term: any): boolean {
+    isAtom(term: unknown): boolean {
         return typeof term === "string";
     }
 
@@ -174,7 +174,7 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is a binary; otherwise, returns `false`.
      */
-    isBinary(term: any): boolean {
+    isBinary(term: unknown): boolean {
         return typeof term === "string";
     }
 
@@ -183,7 +183,7 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is a bitstring; otherwise, returns `false`.
      */
-    isBitstring(term: any): boolean {
+    isBitstring(term: unknown): boolean {
         return typeof term === "string";
     }
 
@@ -192,7 +192,7 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is a boolean; otherwise, returns `false`.
      */
-    isBoolean(term: any): boolean {
+    isBoolean(term: unknown): boolean {
         return typeof term === "boolean";
     }
 
@@ -202,7 +202,7 @@ class Kernel {
      * @param name - (Optional) The name of the exception to check against.
      * @returns `true` if the input term is an exception (or a specific exception if `name` is provided); otherwise, returns `false`.
      */
-    isException(term: any, name?: string): boolean {
+    isException(term: unknown, name?: string): boolean {
         if (name) {
             return term instanceof Error && term.name === name;
         } else {
@@ -215,7 +215,7 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is a floating-point number; otherwise, returns `false`.
      */
-    isFloat(term: any): boolean {
+    isFloat(term: unknown): boolean {
         return typeof term === "number" && !Number.isInteger(term);
     }
 
@@ -226,7 +226,7 @@ class Kernel {
      * @param arity - (Optional) The number of arguments the function can be applied with.
      * @returns `true` if the input term is a function (and optionally, with the specified `arity`); otherwise, returns `false`.
      */
-    isFunction(term: any, arity?: number): boolean {
+    isFunction(term: unknown, arity?: number): boolean {
         if (arity) {
             return typeof term === "function" && term.length === arity;
         } else {
@@ -239,7 +239,7 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is an integer; otherwise, returns `false`.
      */
-    isInteger(term: any): boolean {
+    isInteger(term: unknown): boolean {
         return typeof term === "number" && Number.isInteger(term);
     }
 
@@ -248,7 +248,7 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is a list; otherwise, returns `false`.
      */
-    isList(term: any): boolean {
+    isList(term: unknown): boolean {
         return Array.isArray(term);
     }
 
@@ -257,7 +257,7 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is a map; otherwise, returns `false`.
      */
-    isMap(term: any): boolean {
+    isMap(term: unknown): boolean {
         return typeof term === "object" && !Array.isArray(term) && term !== null;
     }
 
@@ -267,7 +267,7 @@ class Kernel {
      * @param key - The key to check for in the map.
      * @returns `true` if the `key` is present in the `map`; otherwise, returns `false`.
      */
-    isMapKey(map: Record<string, any>, key: string): boolean {
+    isMapKey(map: Record<string, unknown>, key: string): boolean {
         return key in map;
     }
 
@@ -276,7 +276,7 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is `null` or `undefined`; otherwise, returns `false`.
      */
-    isNil(term: any): boolean {
+    isNil(term: unknown): boolean {
         return term === null || term === undefined;
     }
 
@@ -285,7 +285,7 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is a number; otherwise, returns `false`.
      */
-    isNumber(term: any): boolean {
+    isNumber(term: unknown): boolean {
         return typeof term === "number";
     }
 
@@ -294,8 +294,8 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is a PID; otherwise, returns `false`.
      */
-    isPid(term: any): boolean {
-        return typeof term === "object" && term.hasOwnProperty("pid");
+    isPid(term: unknown): boolean {
+        return typeof term === "object" && term!.hasOwnProperty("pid");
     }
 
     /**
@@ -303,8 +303,8 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is a port identifier; otherwise, returns `false`.
      */
-    isPort(term: any): boolean {
-        return typeof term === "object" && term.hasOwnProperty("port");
+    isPort(term: unknown): boolean {
+        return typeof term === "object" && term!.hasOwnProperty("port");
     }
 
     /**
@@ -312,8 +312,8 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is a reference; otherwise, returns `false`.
      */
-    isReference(term: any): boolean {
-        return typeof term === "object" && term.hasOwnProperty("ref");
+    isReference(term: unknown): boolean {
+        return typeof term === "object" && term!.hasOwnProperty("ref");
     }
 
     /**
@@ -323,11 +323,11 @@ class Kernel {
      * @param name - (Optional) The name of the struct to check against.
      * @returns `true` if the input term is a struct (and optionally, with the specified `name`); otherwise, returns `false`.
      */
-    isStruct(term: any, name?: string): boolean {
+    isStruct(term: unknown, name?: string): boolean {
         if (name) {
-            return typeof term === "object" && term.constructor?.name === name;
+            return typeof term === "object" && term!.constructor?.name === name;
         } else {
-            return typeof term === "object" && term.constructor?.name !== "Object";
+            return typeof term === "object" && term!.constructor?.name !== "Object";
         }
     }
 
@@ -336,7 +336,7 @@ class Kernel {
      * @param term - The input term to check.
      * @returns `true` if the input term is a tuple; otherwise, returns `false`.
      */
-    isTuple(term: any): boolean {
+    isTuple(term: unknown): boolean {
         return Array.isArray(term) && Object.getPrototypeOf(term) === Array.prototype;
     }
 
@@ -345,7 +345,7 @@ class Kernel {
      * @param list - The input list.
      * @returns The length of the list.
      */
-    length(list: any[]): number {
+    length(list: unknown[]): number {
         return list.length;
     }
 
@@ -354,7 +354,7 @@ class Kernel {
      * @param map - The input map.
      * @returns The size of the map.
      */
-    mapSize(map: Record<string, any>): number {
+    mapSize(map: Record<string, unknown>): number {
         return Object.keys(map).length;
     }
 
@@ -363,7 +363,7 @@ class Kernel {
      * @param value - The input value to negate.
      * @returns The negation of the input value (i.e., `true` becomes `false`, and `false` becomes `true`).
      */
-    not(value: any): boolean {
+    not(value: unknown): boolean {
         return !value;
     }
 
@@ -373,7 +373,7 @@ class Kernel {
      * @param right - The right-hand side operand.
      * @returns `true` if either `left` or `right` is truthy; otherwise, returns `false`.
      */
-    or(left: any, right: any): boolean {
+    or(left: unknown, right: unknown): boolean {
         return Boolean(left || right);
     }
 
@@ -402,7 +402,7 @@ class Kernel {
      * @returns The list without its first element.
      * @throws An `Error` if the list is empty.
      */
-    tl(list: any[]): any[] {
+    tl(list: unknown[]): unknown[] {
         if (list.length === 0) {
             throw new Error("ArgumentError: List is empty");
         }
@@ -423,7 +423,7 @@ class Kernel {
      * @param tuple - The input tuple.
      * @returns The size of the tuple.
      */
-    tupleSize(tuple: any[]): number {
+    tupleSize(tuple: unknown[]): number {
         return tuple.length;
     }
 }
