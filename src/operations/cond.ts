@@ -17,13 +17,13 @@ export function cond<T>(value: T, ...conditions: Array<Condition<T>>): unknown {
 	}
 }
 
-const result = cond<number>(3,
-	{ predicate: (value) => value === 1, result: 'one' },
-	{ predicate: (value) => value === 2, result: 'two' },
-	{ predicate: (value) => value === 3, result: 'three' },
-	{ predicate: (value) => value === 4, result: 'four' },
-	{ predicate: (value) => value === 5, result: 'five' },
-);
+// const result = cond<number>(3,
+// 	{ predicate: (value) => value === 1, result: 'one' },
+// 	{ predicate: (value) => value === 2, result: 'two' },
+// 	{ predicate: (value) => value === 3, result: 'three' },
+// 	{ predicate: (value) => value === 4, result: 'four' },
+// 	{ predicate: (value) => value === 5, result: 'five' },
+// );
 
-console.log(result); // => "three"
+// console.log(result); // => "three"
 
